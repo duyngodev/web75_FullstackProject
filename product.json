@@ -1,0 +1,484 @@
+[
+  {
+    "name": "Set Box quà tặng Ngọt Ngào",
+    "price": 169000,
+    "imgURL1":"https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/set-box-16998628502.png",
+    "imgURL2":"https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/set-box-16998628502.png",
+    "description": "Quà tặng ngọt ngào nhân ngày 20/11",
+    "category": "20-11",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 50
+  },
+  {
+    "name": "Macaron",
+    "price": 110000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/maracon-mini-16998627990.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/maracon-mini-16998627990.png",
+    "description": "Hộp 200g",
+    "category": "20-11",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 30
+  },
+  {
+    "name": "Cookies Mini",
+    "price": 35000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-dong-tien01-16765289149.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-dong-tien01-16765289149.png",
+    "description": "Bịch 200g",
+    "category": "20-11",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 20
+  },
+  {
+    "name": "Cookies Lưỡi Mèo",
+    "price": 60000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-luoi-meo-1-16618824780.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-luoi-meo-3-16618824787.png",
+    "description":
+      "Hũ bánh 150gr với những chiếc cookies lưỡi mèo có hương thơm vanilla nhẹ nhàng, vị béo của bơ và vị ngọt nhẹ dịu của đường",
+    "category": "20-11",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 45
+  },
+  {
+    "name": "Bánh Quy Kẹp Phô Mai",
+    "price": 80000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-quy-kep-pho-mai-16998626669.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-quy-kep-pho-mai-16998626669.png",
+    "description": "Hộp 180g",
+    "category": "20-11",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 60
+  },
+  {
+    "name": "Bánh Dứa Mini",
+    "price": 98000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-dua-202-16780829977.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-dua-201-16780829972.png",
+    "description": "Hộp 250g",
+    "category": "20-11",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 35
+  },
+  {
+    "name": "Bánh Kem Trái Cây",
+    "price": 350000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-6-16837910471.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-6-16837910471.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 30
+  },
+  {
+    "name": "Sweet Cake 1",
+    "price": 350000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-10-16837921087.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-10-16837921087.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 25
+  },
+  {
+    "name": "Sweet Cake 2",
+    "price": 350000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-7-16837921572.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-7-16837921572.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 45
+  },
+  {
+    "name": "Bánh Kem Tráng Gương 2",
+    "price": 550000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-9-16837922576.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-9-16837922576.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 5
+  },
+  {
+    "name": "Sweet Cake 4",
+    "price": 550000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-8-16837922966.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-8-16837922966.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 35
+  },
+  {
+    "name": "Sweet Cake 5",
+    "price": 450000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-11-16837923268.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-11-16837923268.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 12
+  },
+  {
+    "name": "Udon",
+    "price": 450000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-13-16837926873.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-13-16837926873.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 7
+  },
+  {
+    "name": "Bánh Kem Tráng Gương",
+    "price": 550000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-kem-trang-guong01-16965797587.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-kem-trang-guong01-16965797587.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 24
+  },
+  {
+    "name": "Búp Bê",
+    "price": 400000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/bup-be-16889763242.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/bup-be-16889763242.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 5
+  },
+  {
+    "name": "Bánh Pikachu",
+    "price": 400000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg0666-16889763670.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg0666-16889763670.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 8
+  },
+  {
+    "name": "Bánh Kem Chocolate",
+    "price": 450000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg2919-16889768204.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg2919-16889768204.pngg",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 15
+  },
+  {
+    "name": "Bánh Kem Socola Chanh Dây",
+    "price": 450000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg3446-16889766353.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/mg3446-16889766353.png",
+    "description": "Sugar Town có nhận làm bánh theo yêu cầu của Khách Hàng.",
+    "category": "BÁNH KEM",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 25
+  },
+  {
+    "name": "Bánh Pizza Thịt Xông Khói và Thịt Nguội",
+    "price": 110000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/pz-16716006859.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/pz2-16716006850.png",
+    "description":
+      "Ngon miệng với nhân thịt nguội và thịt ba rọi xông khói giòn dai, kết hợp thêm vị ngọt thanh của nấm rơm, hành tây và cà chua xay bắt vị. Đế bánh mỏng vừa, giòn xốp chuẩn nhà hàng Âu.",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 45
+  },
+  {
+    "name": "Bánh Ngàn Lớp Nhân Xúc Xích",
+    "price": 108000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhnganlopnhanxucxichsausagepuff01-16509554522.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhnganlopnhanxucxichsausagepuff2-16509554528.png",
+    "description":
+      "Vỏ bánh nướng giòn xốp, dậy vị bơ chuẩn Âu, đi kèm nhân Xúc xích Vườn Bia - loại xúc xích từ lâu đã được giới sành ăn yêu thích bởi hương vị đặc trưng từ các nguyên liệu tươi ngon: nạc heo dăm, mỡ heo béo, lòng giòn dai cùng các gia vị muối, đường, tiêu, tỏi...",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 35
+  },
+  {
+    "name": "Bánh Pizza Hải Sản",
+    "price": 110000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhpizzahaisanseafoodpizza01-16509579522.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhpizzahaisanseafoodpizza03-16509579527.png",
+    "description":
+      "Sử dụng tôm, mực tươi ngon được đánh bắt từ vùng biển duyên hải Nam Trung Bộ, bổ sung chất xơ đi kèm từ bắp hạt, thơm, hành tây, ớt chuông. Đế bánh mỏng vừa, giòn xốp chuẩn nhà hàng Âu.",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 30
+  },
+  {
+    "name": "Bánh Sừng Bò",
+    "price": 110000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhsungbocroissant01-16509558012.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhsungbocroissant03-16509558016.png",
+    "description":
+      "Chuẩn vị nguyên bản với lớp vỏ giòn xốp vàng ươm, có thể xé ra từng lớp mỏng nhỏ. Bên trong ruột mềm tơi, không bị nén đặc và dậy vị bơ Pháp tan chảy khi thưởng thức.",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 20
+  },
+  {
+    "name": "Bánh Pizza 4 Loại Phô Mai",
+    "price": 110000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhpizza4loaiphomaipizza4cheese01-16509581147.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhpizza4loaiphomaipizza4cheese02-16509581144.png",
+    "description":
+      "Mang đến bốn loại phô mai nổi tiếng Mozzarella, Edam, Cheddar và Gouda đặc trưng, dễ dàng kéo sợi và tạo nên hương vị thơm ngon béo ngậy. Đế bánh mỏng vừa, giòn xốp chuẩn nhà hàng Âu.",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": true,
+    "bestSeller": true,
+    "quantity": 10
+  },
+  {
+    "name": "Bánh mì que bò bằm",
+    "price": 85000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/asset-3-16957067916.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/sssssss-16957067912.png",
+    "description":
+      "Bánh mì que truyền thống kết hợp cùng thịt bò xay và sốt cà chua, rải thêm lớp phô mai Mozzarella kéo sợi. Thích hợp dùng ăn sáng hoặc ăn xế chiều.",
+    "category": "BÁNH CẤP ĐÔNG",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 30
+  },
+  {
+    "name": "Bánh Quy Kẹp Phô Mai Trứng Muối",
+    "price": 65000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/ck-16715406953.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/ck-16715406953.png",
+    "description":
+      "Bột mì, Muối, Đường, Bơ lạt, Marshmallow, Trứng muối, Phô mai",
+    "category": "BÁNH COOKIES",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 20
+  },
+  {
+    "name": "Cookies Roll Cripsy",
+    "price": 65000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-roll-crispy-1-16578117426.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-roll-crispy-3-16578117429.png",
+    "description":
+      "Những que bánh có hình xoắn được làm từ dough Puff Pastry có kết cấu ngàn lớp, giòn rụm được sấy vàng đều với lớp phủ đường trứng trên bề mặt",
+    "category": "BÁNH COOKIES",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 30
+  },
+  {
+    "name": "Cookies Mini",
+    "price": 35000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-dong-tien01-16765289149.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-dong-tien01-16765289149.png",
+    "description": "",
+    "category": "BÁNH COOKIES",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 20
+  },
+  {
+    "name": "Cookies Lưỡi Mèo",
+    "price": 60000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-luoi-meo-1-16618824780.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/cookies-luoi-meo-3-16618824787.png",
+    "description":
+      "Hũ bánh 150gr với những chiếc cookies lưỡi mèo có hương thơm vanilla nhẹ nhàng, vị béo của bơ và vị ngọt nhẹ dịu của đường",
+    "category": "BÁNH COOKIES",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 40
+  },
+  {
+    "name": "Bánh Dứa Mini",
+    "price": 98000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-dua-202-16780829977.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-dua-201-16780829972.png",
+    "description": "Hộp 250g",
+    "category": "BÁNH COOKIES",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 40
+  },
+  {
+    "name": "Cheese Stick",
+    "price": 95000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/chesee-stick01-16965743173.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/chesee-stick01-16965743173.png",
+    "description":
+      "Sự kết hợp từ nhiều loại phô mai tươi như: Mozzarella, Parmesan, … cho ra những que cookies thơm béo và có chút vị cay nhẹ.",
+    "category": "BÁNH COOKIES",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 40
+  },
+  {
+    "name": "Bánh Tart Trứng Bồ Đào Nha ( Set 4 bánh )",
+    "price": 75000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/ta2-16715384371.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/ta-16715384378.png",
+    "description": "Bột mì, Men, Muối, Đường, Bơ lạt, Trứng gà, Sữa tươi",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": true,
+    "bestSeller": true,
+    "quantity": 60
+  },
+  {
+    "name": "Bánh Mì Xúc Xích",
+    "price": 25000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/xx-16715354409.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/xx-16715354409.png",
+    "description":
+      "Nổi bật với nhân xúc xích dai giòn tươi ngon, đậm đà và thơm lừng nhờ các loại gia vị truyền thống. Bao bọc bên ngoài là lớp vỏ bánh mì vàng ươm, mềm dai xé sợi.",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": false,
+    "bestSeller": true,
+    "quantity": 60
+  },
+  {
+    "name": "Bánh Mì Chà Bông Gà Cay ( Set 4 Bánh )",
+    "price": 64000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-mi-cha-bong-ga-cay02-16752345695.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-mi-cha-bong-ga-cay01-16752345693.png",
+    "description":
+      "Cốt bánh bột mì mềm xốp, dậy mùi bơ Pháp và dầu trứng béo ngậy. Kết hợp cùng lớp chà bông gà tươi the cay đậm đà trên mặt bánh vô cùng kích thích vị giác.",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": true,
+    "bestSeller": true,
+    "quantity": 40
+  },
+  {
+    "name": "Bánh Mì Cua Phô Mai ( Set 5 bánh )",
+    "price": 45000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banh-cua-16715345233.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/102-16528716318.png",
+    "description":
+      "Tạo hình chú cua lạ mắt với vỏ bánh mì nướng vàng ươm và cốt bánh mềm dai, thớ sợi, dậy mùi bơ. Kết hợp cùng nhân phô mai mằn mặn, beo béo đặc trưng.",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": true,
+    "bestSeller": false,
+    "quantity": 40
+  },
+  {
+    "name": "Bánh Mì Sandwich",
+    "price": 25000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/sandwich-16715342611.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/sandwichlat03-16509456549.png",
+    "description":
+      "Lát bánh sandwich mềm mịn, thơm nhẹ vị bơ sữa, không chai cứng. Phù hợp chế biến nhiều món ăn khác nhau, kể cả cho người ăn kiêng.",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 33
+  },
+  {
+    "name": "Bánh Mì Hoa Cúc (Brioche Trese')",
+    "price": 90000,
+    "imgURL1":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhmihoacuc01-16509500302.png",
+    "imgURL2":
+      "https://www.sugartown.vn/thumb/500x500/2/upload/sanpham/banhmihoacuc03-16509500305.png",
+    "description":
+      "Từng thớ bánh xé sợi mềm mịn, dậy vị trứng gà béo ngậy và hương bơ Pháp thơm lừng đặc trưng. Phủ thêm một lớp hạnh nhân và hạt vừng nướng vàng ươm trên bề mặt giúp tăng thêm hương vị.",
+    "category": "BÁNH MÌ-BÁNH NGỌT",
+    "newProduct": false,
+    "bestSeller": false,
+    "quantity": 33
+  }
+]
