@@ -8,7 +8,12 @@ import {
 } from "../controller/cart.controller.js";
 
 const productRouter = express.Router();
-productRouter.route("/").get().post().put().delete();
+productRouter
+  .route("/")
+  .get()
+  .post()
+  .put()
+  .delete();
 productRouter
   .route("/:productId")
   .get(tryCatch(getProductById))

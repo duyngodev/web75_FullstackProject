@@ -2,6 +2,7 @@ import express from "express";
 import { defaultRouter } from "./default.route.js";
 import { cartRouter } from "./cart.route.js";
 import { productRouter } from "./product.route.js";
+import { paymentRouter } from "./payment.route.js";
 // const router = express.Router();
 
 const routes = [
@@ -16,6 +17,10 @@ const routes = [
   {
     path: "/product",
     router: productRouter,
+  },
+  {
+    path: "/payment",
+    router: paymentRouter,
   },
   /* {
     path: "/private",
@@ -32,6 +37,9 @@ function routeFactory(app) {
       app.use(route.path, route.router);
     }
     if ((route.path = "/product")) {
+      app.use(route.path, route.router);
+    }
+    if ((route.path = "/payment")) {
       app.use(route.path, route.router);
     }
     // if (route.path = "/admin") app.use(route.path, validation-authen-middleware, validation-author-middleware , app.router);
