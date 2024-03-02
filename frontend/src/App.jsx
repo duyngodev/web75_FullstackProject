@@ -1,6 +1,20 @@
-import "./App.css";
+import './App.css'
+import Landing from './Pages/Landing'
+import { Route, Routes } from 'react-router-dom'
+import App2 from './App2'
 
 function App() {
-  return <h1 className="text-red-500 text-3xl font-bold underline">Hello world!</h1>;
+  
+  return (
+    <>
+     
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        {/* Thêm Path to Service ở đây vì không có Header, Footer */}
+        <Route path="*" element={<App2 />} />
+      </Routes>
+    </>
+  )
 }
-export default App;
+
+export default App
