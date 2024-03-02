@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import ApiStateProvider from './Components/nhandev/ApiStateProvider.jsx'
+
+import ApiStateProvider from './components/nhandev/ApiStateProvider.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
