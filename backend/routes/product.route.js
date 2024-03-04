@@ -1,6 +1,6 @@
 import express from "express";
 import { tryCatch } from "../middlewares/tryCatch.middleware.js";
-import { getProductById, buyProduct } from "../controller/product.controller.js";
+import { getAllProducts, createProduct, getProductById, buyProduct } from "../controller/product.controller.js";
 import {
   getCartById,
   payCart,
@@ -8,11 +8,15 @@ import {
 } from "../controller/cart.controller.js";
 
 const productRouter = express.Router();
-productRouter.route("/").get().post().put().delete();
+productRouter
+  .route("/")
+    .get(tryCatch(getAllProducts))
+    .post(tryCatch(createProduct))
+    .put()
+    .delete();
 productRouter
   .route("/:productId")
-  .get(tryCatch(getProductById))
-  .post()
-  .put(tryCatch(buyProduct))
-  .delete();
-export { productRouter };
+    .get(tryCatch(getProductById))
+    .post()
+    .put(tryCatch(buyProduct))
+    .delete();
