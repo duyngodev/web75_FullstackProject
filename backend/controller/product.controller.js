@@ -1,5 +1,5 @@
-import { ProductModel } from "../model/product.model.js";
-import { CartModel } from "../model/cart.model.js";
+import ProductModel  from "../model/product.model.js";
+import CartModel from "../model/cart.model.js";
 
 export const getProductById = async (req, res, next) => {
   try {
@@ -16,11 +16,7 @@ export const getProductById = async (req, res, next) => {
 
 export const buyProduct = async (req, res, next) => {
   try {
-    
   } catch (error) {
     next(error);
   }
 };
-
-
-
