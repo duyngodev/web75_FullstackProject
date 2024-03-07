@@ -1,16 +1,16 @@
 import express from "express";
 import { tryCatch } from "../middlewares/tryCatch.middleware.js";
-import { getProductById, buyProduct } from "../controller/product.controller.js";
 import {
   getCartById,
   payCart,
   cancelPayProduct,
+  getAllCart,
 } from "../controller/cart.controller.js";
 
 const cartRouter = express.Router();
 cartRouter
   .route("/")
-  .get()
+  .get(tryCatch(getAllCart))
   .post()
   .put()
   .delete();

@@ -7,6 +7,6 @@ const paymentSchema = mongoose.Schema({
     status: { type: String, default: 'pending' },
   });
   
-const PaymentModel = mongoose.model('Payment', paymentSchema);
-export default PaymentModel;
+const paymentModel = mongoose.model('Payment', paymentSchema);
+export default paymentModel;
   

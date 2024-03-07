@@ -1,4 +1,4 @@
-import { ProductInCartModel } from "../model/productInCart.model";
+import ProductInCartModel from "../model/productInCart.model";
 
 export const getProductInCartById = async (req, res, next) => {
   try {

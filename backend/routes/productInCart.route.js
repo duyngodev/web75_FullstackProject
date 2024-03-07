@@ -1,5 +1,6 @@
 import express from "express";
 import { tryCatch } from "../middlewares/tryCatch.middleware.js";
+import {getProductInCartById} from"../controller/productInCart.controller.js"
 const productInCartRouter = express.Router();
 
 productInCartRouter
@@ -10,7 +11,7 @@ productInCartRouter
     .delete();
 productInCartRouter
   .route("/:productInCartId")
-  .get()
+  .get(getProductInCartById)
   .post()
   .put()
   .delete();

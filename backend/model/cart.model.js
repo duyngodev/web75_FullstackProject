@@ -10,10 +10,6 @@ const cartSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  paymentId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Payment'
-  },
   discount: {
     type: Number
   },
