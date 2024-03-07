@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mui/material'
 import { Link } from 'react-router-dom'
-import ButtonIcon from './ButtonIcon'
+import ButtonIcon from './ButtonIcon.jsx'
 
 const LandingItem = ({ src, alt, title, link }) => {
     return (
