@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import '../Components/nhandev/CategoryListPage.scss'
-11
+import '../components/nhandev/CategoryListPage.scss'
+
 const CategoryListPage = () => {
     const history = useNavigate();
     const filterImg =
