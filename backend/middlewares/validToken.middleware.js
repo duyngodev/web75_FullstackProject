@@ -3,6 +3,7 @@ import { getSession } from "../Utils/sessionHandler.js";
 import { verifyJWT } from "../Utils/jwt.utils.js";
 
 const validToken = async (req, res, next) => {
+  req.user = {};
   const { access_token: accessToken, refresh_token: refreshToken } =
     req.cookies;
   if (!accessToken) {
