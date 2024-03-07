@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Components/nhandev/Service.scss'
+import '../components/nhandev/Service.scss'
 
 const Service = () => {
     return (
