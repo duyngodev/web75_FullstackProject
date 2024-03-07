@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/material'
-import LandingItem from './LandingItem'
+import LandingItem from './LandingItem.jsx'
 
 
 
