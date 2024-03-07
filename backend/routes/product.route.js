@@ -1,6 +1,15 @@
 import express from "express";
-import { tryCatch } from "../middlewares/tryCatch.middleware.js";
-import { getAllProduct,getProductById, buyProduct } from "../controller/product.controller.js";
+import { tryCatch } from "../Utils/tryCatch.middleware.js";
+import {
+  getAllProduct,
+  getProductById,
+  buyProduct,
+} from "../controller/product.controller.js";
+import {
+  getCartById,
+  payCart,
+  cancelPayProduct,
+} from "../controller/cart.controller.js";
 
 const productRouter = express.Router();
 productRouter

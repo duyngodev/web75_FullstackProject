@@ -70,5 +70,3 @@ export const buyProduct = async (req, res, next) => {
     next(error);
   }
 };
-
-
