@@ -1,6 +1,6 @@
 import './App.css'
-import Footer from './Components/shared/Footer.jsx'
-import Header from './Components/shared/Header.jsx'
+import Footer from './components/shared/Footer.jsx'
+import Header from './components/shared/Header.jsx'
 import Home from './Pages/Home.jsx'
 import { Route, Routes } from 'react-router-dom'
 import NotFound404 from './Pages/NotFound404.jsx'
