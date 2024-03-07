@@ -1,10 +1,10 @@
-import SingleProduct from "../Components/nhandev/SingleProduct";
+import SingleProduct from "../Components/nhandev/SingleProduct.jsx";
 import React, { useContext, useEffect, useState } from "react";
 import { ApiStateContext } from '../Components/nhandev/ApiStateProvider';
 import { useParams, useRoutes } from "react-router-dom";
 import '../Components/nhandev/ProductDetail.scss'
 import '../Components/nhandev/Swiper.scss'
-import ListSingleProduct from "../Components/nhandev/ListSingleProduct";
+import ListSingleProduct from "../Components/nhandev/ListSingleProduct.jsx";
 const ProductDetail = () => {
 
   const [data, setData] = useState([]);
