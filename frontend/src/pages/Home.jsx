@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from '../Components/shared/Header'
+import Header from '../Components/shared/Header.jsx'
 import { Box, Container, CssBaseline } from '@mui/material'
-import Carousel from '../Components/duydev/Home/Carousel'
-import NgotVaThuong from '../Components/duydev/Home/NgotVaThuong'
-import Events from '../Components/duydev/Home/Events'
-import Discount from '../Components/duydev/Home/Discount'
-import Logo from '../Components/duydev/Home/Logo'
-import Services from '../Components/duydev/Home/Services'
+import Carousel from '../Components/duydev/Home/Carousel.jsx'
+import NgotVaThuong from '../Components/duydev/Home/NgotVaThuong.jsx'
+import Events from '../Components/duydev/Home/Events.jsx'
+import Discount from '../Components/duydev/Home/Discount.jsx'
+import Logo from '../Components/duydev/Home/Logo.jsx'
+import Services from '../Components/duydev/Home/Services.jsx'
 
 
 const Home = () => {
