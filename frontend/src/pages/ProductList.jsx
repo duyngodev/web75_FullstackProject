@@ -1,5 +1,5 @@
 import { Box, Button, Checkbox, Container, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, IconButton, Radio, RadioGroup, Stack, Typography } from '@mui/material'
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderIcon';
+import BookmarkBorderIcon from '/@mui/icons-material/BookmarkBorderIcon';
 import BookmarkIcon from '@mui/icons-material/BookmarkIcon';
 import { useState } from 'react'
 import { useEffect } from 'react';
