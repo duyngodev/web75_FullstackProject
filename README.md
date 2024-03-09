@@ -1,5 +1,5 @@
 
-(LOGO)
+![plot](./logo.jpg)
 
 # web75_FullstackProject
 ## Production
@@ -12,7 +12,7 @@
 - Back-end: MongDB, NodeJs, Express, 
 
 ## Member 
-\
+
 ### Duy Bao Ngo (Leader)
 - Roles: Leader, Front-end, Back-end.
 - Front-end Tasks: Home page, landing page, set up project, product list page,  route-link, reporter.
@@ -22,12 +22,12 @@
 - Roles: Front-end, Back-end
 - Front-end Tasks: Product page, category list page
 - Back-end Tasks: Payment, Paypal, Cart (CRUD).
-\
+
 ### Nhan Hao
 - Roles: Front-end, Back-end
 - Front-end Tasks: product list page.
 - Back-end Tasks: Search, Filter, Sort, Pagination.
-\
+
 ## Software Design
 ### Product
 ~~~
