@@ -3,7 +3,7 @@
 
 # web75_FullstackProject
 ## Production
-- URL: [deploy url](https://web75-g3bakery.onrender.com)
+- URL: [https://web75-g3bakery.onrender.com](https://web75-g3bakery.onrender.com)
 
 ## Documentations
 
