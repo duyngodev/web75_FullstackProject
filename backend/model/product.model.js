@@ -27,9 +27,9 @@ const productSchema = mongoose.Schema({
   },
   quantity: {
     type: Number,
-  }
+  },
 });
 
 const ProductModel = mongoose.model("Product", productSchema);
 
-export { ProductModel };
+export default ProductModel;
