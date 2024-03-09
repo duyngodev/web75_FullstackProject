@@ -2,17 +2,27 @@ import UserModel from "../model/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import validator from "validator";
-import { getSession } from "../Utils/sessionHandler.js";
-// import SessionModel from "../model/session.model.js";
-import { createSession, invalidateSession } from "../Utils/sessionHandler.js";
+import { createSession } from "../Utils/sessionHandler.js";
 
 // login
 const userLogin = async (req, res) => {
+  const errorTypeIn = [];
   const { email, password } = req.body;
+  if (!email || !password) {
+    errorTypeIn = ["email", "password"];
+    return res.status(200).send({ data: errorTypeIn });
+  }
   const user = await UserModel.findOne({ email: email });
+  if (!user) {
+    errorTypeIn.push("email");
+    return res.status(200).send({ data: errorTypeIn });
+  }
+
   const compare = await bcrypt.compare(password, user.password);
-  if (!email || !password || !user || !compare)
-    res.status(400).send("Invalid email or password");
+  if (!compare) {
+    errorTypeIn.push("password");
+    return res.status(200).send({ data: errorTypeIn });
+  }
   // create session
   const session = await createSession(user._id);
   //create token
