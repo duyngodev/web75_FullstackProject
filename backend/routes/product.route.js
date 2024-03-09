@@ -1,6 +1,6 @@
 import express from "express";
-import { tryCatch } from "../middlewares/tryCatch.middleware.js";
 import { getAllProducts, createProduct, getProductById, buyProduct, filterProduct } from "../controller/product.controller.js";
+import { tryCatch } from "../Utils/tryCatch.middleware.js";
 import {
   getCartById,
   payCart,

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import {Box} from '@mui/material';
+import {Paper} from '@mui/material';
+import {Grid} from '@mui/material';
 import { Stack } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import AddCircle from '@mui/icons-material/AddCircle';
-import RemoveCircle from '@mui/icons-material/RemoveCircle';
-import HighlightOff from '@mui/icons-material/HighlightOff';
+import {Button} from '@mui/material';
+import {TextField} from '@mui/material';
+import {AddCircle} from '@mui/icons-material';
+import {RemoveCircle} from '@mui/icons-material';
+import {HighlightOff} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const Cart = (props) => {

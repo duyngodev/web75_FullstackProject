@@ -1,5 +1,5 @@
-import { ProductModel } from "../model/product.model.js";
-import { CartModel } from "../model/cart.model.js";
+import ProductModel  from "../model/product.model.js";
+import CartModel from "../model/cart.model.js";
 
 export const getAllProducts = async (req, res) => {
   const products = await ProductModel.find();
@@ -41,7 +41,6 @@ export const getProductById = async (req, res) => {
   }
   res.status(200).send(product);
 };
-
 
 export const buyProduct = async (req, res) => {
   //TODO
