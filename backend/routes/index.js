@@ -26,14 +26,13 @@ const routes = [
 
 function routeFactory(app) {
   routes.map((route) => {
-    if ((route.path === "/user")) {
+    if (route.path === "/user") {
       app.use(route.path, route.router); //no need to authen for stranger
     }
-    if ((route.path === "/cart")) {
+    if (route.path === "/cart") {
       app.use(route.path, route.router);
-
     }
-    if ((route.path === "/product")) {
+    if (route.path === "/product") {
       app.use(route.path, route.router);
     }
   });

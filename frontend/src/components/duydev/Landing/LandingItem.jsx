@@ -9,6 +9,8 @@ const LandingItem = ({ src, alt, title, link }) => {
         backgroundColor: "#FFFFFF30",
         boxShadow: "0 0 12px 12px #FFFFFF30",
         borderRadius: "35%",
+        margin:{sm:"10px"}
+
       }}>
       <Link to={link}>
         <Box

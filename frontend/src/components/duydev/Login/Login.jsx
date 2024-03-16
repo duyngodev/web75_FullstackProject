@@ -1,53 +1,34 @@
 import { Box, Button, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
-import styled from "@emotion/styled";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
-  const InputBox = ({ children }) => {
-    const Component = styled(Box)({
-      width: "100%",
-      height: "50px",
-      margin: "30px 0",
-      position: "relative",
-      "& input": {
-        width: "100%",
-        height: "100%",
-        background: "transparent",
-        outline: "none",
-        border: "2px solid #FFFFFF20",
-        borderRadius: "40px",
-        padding: "20px 45px 20px 20px",
-        color: "#FFFFFF",
-      },
-      "& input::placeholder": {
-        color: "#FFFFFF",
-      },
-    });
-    return <Component>{children}</Component>;
-  };
-
+const Login = ({ prevLocation }) => {
   // State config
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState([]);
+  const inputEmail = useRef();
+  const inputPassword = useRef();
+  const [errType, setErrType] = useState([]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const data = { email, password };
-    console.log(email, password);
-    const response = await axios(`http://localhost:3001/user/login`, {
-      method: "POST",
-      header: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: "aa", password: "aa" }),
-    })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-    console.log(response, "ha ha");
+    const email = inputEmail.current.value;
+    const password = inputPassword.current.value;
+    await axios
+      .post(
+        `http://localhost:3001/user/login`,
+        { email, password },
+        { withCredentials: true } // NEED TO CORS with coookies
+      )
+      .then(() => {
+        setErrType([]);
+        window.location.href = !prevLocation ? "/home" : `${prevLocation}`;
+      })
+      .catch((err) => {
+        setErrType(err.response.data);
+      });
   };
 
   return (
@@ -90,13 +71,46 @@ const Login = () => {
               }}>
               Login
             </h3>
-            <InputBox className="input-box">
-              <input
+            <Box
+              className="input-box"
+              sx={{
+                width: "100%",
+                height: "50px",
+                margin: "30px 0",
+                position: "relative",
+              }}>
+              <Box
+                ref={inputEmail}
+                component="input"
                 type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                required
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  background: errType.includes("password")
+                    ? "#FFEEEE"
+                    : "transparent",
+                  outline: "none",
+                  border: `2px solid ${
+                    errType.includes("email") ? "#e7195a" : "#FFFFFF20"
+                  }`,
+                  borderRadius: "40px",
+                  padding: "20px 45px 20px 20px",
+                  color: errType.includes("email") ? "#e7195a" : "#FFFFFF",
+                  "&::placeholder": {
+                    color: errType.includes("email") ? "#e7195a" : "#FFFFFF",
+                  },
+                  "&:focus": {
+                    border: `2px solid ${
+                      errType.includes("email") ? "#e7195a" : "#FFFFFF"
+                    }`,
+                    // background: "transparent",
+                    color: errType.includes("email") ? "#000" : "#FFFFFF",
+                    "&::placeholder": {
+                      color: errType.includes("email") ? "#e7195a" : "#FFFFFF",
+                    },
+                  },
+                }}
               />
               <PersonIcon
                 sx={{
@@ -104,16 +118,52 @@ const Login = () => {
                   top: "50%",
                   transform: "translateY(-50%)",
                   right: "20px",
+                  color: `${errType.includes("email") ? "#e7195a" : "#FFFFFF"}`,
                 }}
               />
-            </InputBox>
-            <InputBox className="input-box">
-              <input
+            </Box>
+            <Box
+              className="input-box"
+              sx={{
+                width: "100%",
+                height: "50px",
+                margin: "30px 0",
+                position: "relative",
+              }}>
+              <Box
+                ref={inputPassword}
+                component="input"
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  background: errType.includes("password")
+                    ? "#FFEEEE"
+                    : "transparent",
+                  outline: "none",
+                  border: `2px solid ${
+                    errType.includes("password") ? "#e7195a" : "#FFFFFF20"
+                  }`,
+                  borderRadius: "40px",
+                  padding: "20px 45px 20px 20px",
+                  color: errType.includes("password") ? "#e7195a" : "#FFFFFF",
+                  "&::placeholder": {
+                    color: errType.includes("password") ? "#e7195a" : "#FFFFFF",
+                  },
+                  "&:focus": {
+                    border: `2px solid ${
+                      errType.includes("password") ? "#e7195a" : "#FFFFFF"
+                    }`,
+                    // background: "transparent",
+                    color: errType.includes("password") ? "#000" : "#FFFFFF",
+                    "&::placeholder": {
+                      color: errType.includes("password")
+                        ? "#e7195a"
+                        : "#FFFFFF",
+                    },
+                  },
+                }}
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                required
               />
               <LockPersonIcon
                 sx={{
@@ -121,9 +171,13 @@ const Login = () => {
                   top: "50%",
                   transform: "translateY(-50%)",
                   right: "20px",
+                  color: `${
+                    errType.includes("password") ? "#e7195a" : "#FFFFFF"
+                  }`,
                 }}
               />
-            </InputBox>
+            </Box>
+
             <Stack
               className="remember-forgot"
               sx={{
@@ -175,15 +229,14 @@ const Login = () => {
                 textAlign: "center",
               }}>
               <p>
-                Don't have an account?{" "}
-                <Box
-                  component="a"
-                  href="#"
+                Don't have an account?
+                {/* <Navigate
+                  to="/login"
                   sx={{
                     color: "#FFF",
                   }}>
-                  Register
-                </Box>
+                  Register asdf
+                </Navigate> */}
               </p>
             </Box>
           </Box>

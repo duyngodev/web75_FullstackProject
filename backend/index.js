@@ -6,18 +6,22 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { routeFactory } from "./routes/index.js";
 import { validToken } from "./middlewares/validToken.middleware.js";
+import { tryCatch } from "./Utils/tryCatch.middleware.js";
 
 const app = express();
 
 dotenv.config();
-app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173", //need for cookies
+    credentials: true, //need for cookies
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
-
 app.use(validToken);
-
-app.use(cors());
 
 routeFactory(app);
 
