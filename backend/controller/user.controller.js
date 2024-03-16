@@ -11,9 +11,9 @@ const userLogin = async (req, res) => {
   if (!email && !password) return res.status(400).send(["email", "password"]);
 
   const user = await UserModel.findOne({ email: email });
+  if (!user) return res.status(400).send(["email", "password"]);
   if (user && !password) return res.status(400).send(["password"]);
 
-  if (!user || !password) return res.status(400).send(["email", "password"]);
   const compare = await bcrypt.compare(password, user.password);
   if (!compare) return res.status(400).send(["password"]);
   // create session
