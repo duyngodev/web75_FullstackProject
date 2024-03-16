@@ -2,31 +2,39 @@ import mongoose from "mongoose";
 
 const cartSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  idProducts: [{
+  idProducts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "product",
+    },
+  ],
+  idUser: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'product'
-  }],
-  idUser:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
+    ref: "user",
   },
-  quantityProducts: [{
-    type: String
-  }],
-  priceProducts: [{
-    type: String
-  }],
+  quantityProducts: [
+    {
+      type: String,
+    },
+  ],
+  priceProducts: [
+    {
+      type: String,
+    },
+  ],
   discount: {
-    type: Number
+    type: Number,
   },
   totalPrice: {
-    type: Number
+    type: Number,
   },
   totalQuantity: {
-    type: Number
-  }
+    type: Number,
+  },
 });
 
 const CartModel = mongoose.model("Cart", cartSchema);
 
-export default CartModel ;
+
+export default CartModel;
+
