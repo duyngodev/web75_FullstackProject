@@ -53,6 +53,7 @@ const Landing = () => {
           right: "0",
           padding: { xs: "0", sm: "0 5%", lg: "0 10%" },
         }}>
+
         <LandingList link={[link[0], link[1], link[2]]} />
         <LandingList link={[link[3], link[4], link[5]]} />
       </Stack>
@@ -74,6 +75,7 @@ const Landing = () => {
           inset: "0",
           zIndex: "-99",
           objectFit: "cover",
+
         }}
       />
     </Container>

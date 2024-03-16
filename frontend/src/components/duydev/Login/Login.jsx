@@ -24,14 +24,11 @@ const Login = ({ prevLocation }) => {
       )
       .then(() => {
         setErrType([]);
-        const a = Cookies.get();
-        console.log(a);
         window.location.href = !prevLocation ? "/home" : `${prevLocation}`;
       })
       .catch((err) => {
         setErrType(err.response.data);
       });
-    console.log(errType);
   };
 
   return (
@@ -180,6 +177,7 @@ const Login = ({ prevLocation }) => {
                 }}
               />
             </Box>
+
             <Stack
               className="remember-forgot"
               sx={{

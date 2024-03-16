@@ -7,15 +7,15 @@ import { blacklisted } from "../middlewares/validToken.middleware.js";
 
 // login
 const userLogin = async (req, res) => {
+  const errorTypeIn = [];
   const { email, password } = req.body;
   if (!email && !password) return res.status(400).send(["email", "password"]);
-
   const user = await UserModel.findOne({ email: email });
   if (!user) return res.status(400).send(["email", "password"]);
   if (user && !password) return res.status(400).send(["password"]);
-
   const compare = await bcrypt.compare(password, user.password);
   if (!compare) return res.status(400).send(["password"]);
+
   // create session
   const session = await createSession(user._id);
   //create token
@@ -79,8 +79,8 @@ const userSignup = async (req, res) => {
       .status(400)
       .send(["email", "password", "name", "repeatPassword"]);
   const exist = await UserModel.findOne({ email });
-  if (exist) return res.status(400).send(["email"]);
 
+  if (exist) return res.status(400).send(["email"]);
   if (!validator.isStrongPassword) return res.status(400).send(["password"]);
   if (password !== repeatPassword)
     return res.status(400).send(["repeatPassword"]);
