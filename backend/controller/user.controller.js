@@ -70,7 +70,7 @@ const userSignup = async (req, res) => {
     throw new Error("Please enter all required fields");
   const exist = await UserModel.findOne({ email });
   if (exist) throw new Error("Email address already in use");
-  if (!validator.isStrongPassword)
+  if (!validator.isStrongPassword(password))
     throw new Error("Please enter a strong password");
   if (password !== repeatPassword)
     throw new Error("please repeat the password");

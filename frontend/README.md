@@ -2,7 +2,7 @@
 
 # G3 Bakery 
 ## Production
-- URL: deploy url
+- URL: [deploy url](https://web75-g3bakery.onrender.com)
 
 ## Documentations
 
