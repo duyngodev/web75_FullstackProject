@@ -1,5 +1,8 @@
+import { getSession } from "../Utils/sessionHandler.js";
+
 const requireUser = async (req, res, next) => {
-  if (!req.user) throw new Error("You must login");
+  const session = await getSession(req.user.sessionId);
+  if (!session) throw new Error("You must login");
   return next();
 };
 

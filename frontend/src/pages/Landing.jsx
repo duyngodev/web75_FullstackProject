@@ -41,29 +41,39 @@ const Landing = () => {
     },
   ];
   return (
-    <Container sx={{ my: "" }}>
+    <Container maxWidth="md">
       <Stack
         direction={{ xs: "column", sm: "row" }}
-        justifyContent={"space-between"}
-
-        p={{ xs: "135% 0 0  0", sm: "50% 0 0", md:"25% 0" }}>
+        justifyContent={{ sm: "space-between" }}
+        sx={{
+          position: "absolute",
+          top: { xs: "50%", sm: "50%" },
+          transform: { sm: "translateY(-50%)" },
+          left: "0",
+          right: "0",
+          padding: { xs: "0", sm: "0 5%", lg: "0 10%" },
+        }}>
         <LandingList link={[link[0], link[1], link[2]]} />
         <LandingList link={[link[3], link[4], link[5]]} />
       </Stack>
       <Box
         sx={{
-          background: "url('https://sugartown.vn/img/bgnavi.png') no-repeat",
-          backgroundPosition: { xs: "bottom ", sm: "bottom" },
+          background: {
+            xs: "url('https://sugartown.vn/img/bgnavi1.jpg') no-repeat",
+            sm: "url('https://sugartown.vn/img/bgnavi.png') no-repeat",
+          },
+          backgroundPosition: { xs: "center", sm: "center" },
           backgroundSize: {
-            xs: "290% 120%",
-            sm: "180% 100%",
-            md: "150% 100%",
-            lg: "125% 100%",
+            xs: "100% 100%",
+            sm: "150% 100%",
+            md: "140% 100%",
+            lg: "110% 100%",
           },
           height: "100vh",
           position: "absolute",
           inset: "0",
           zIndex: "-99",
+          objectFit: "cover",
         }}
       />
     </Container>

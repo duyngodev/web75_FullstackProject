@@ -8,7 +8,6 @@ import {
 // middleware import
 import { requireUser } from "../middlewares/requireUser.middleware.js";
 import { tryCatch } from "../Utils/tryCatch.middleware.js";
-import { validToken } from "../middlewares/validToken.middleware.js";
 
 const router = express.Router();
 
@@ -17,7 +16,7 @@ router.route("/login").post(tryCatch(userLogin));
 
 router.route("/register").post(tryCatch(userSignup));
 //   .post(tryCatch(postDefault))       with middleware validation register
-debugger
+debugger;
 router.route("/logout").delete(tryCatch(requireUser), tryCatch(userLogout));
 //   .post(tryCatch(postDefault))
 
