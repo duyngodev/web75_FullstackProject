@@ -9,6 +9,13 @@ import { validToken } from "./middlewares/validToken.middleware.js";
 
 const app = express();
 
+app.use(
+  cors({
+    // credentails: true,
+    origin: ["http://localhost:3000", "http://localhost:5173"],
+  })
+);
+
 dotenv.config();
 app.use(cookieParser());
 app.use(express.json());
@@ -17,12 +24,6 @@ app.use(morgan("combined"));
 
 app.use(validToken);
 
-app.use(
-  cors({
-    credentails: true,
-    origin: "http://localhost:3000",
-  })
-);
 
 routeFactory(app);
 

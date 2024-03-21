@@ -20,6 +20,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+const url = "http://localhost:3001/product"
+
 const ProductList = () => {
   //CSS properties
   const bannerStyle = {
@@ -117,20 +119,38 @@ const ProductList = () => {
   }, []);
   // Lấy data về
   const [dataProduct, setDataProduct] = useState([]);
-  useEffect(() => {
-    fetch("https://6562048cdcd355c083247a65.mockapi.io/Products/ProductList", {
-      method: "GET",
-    })
-      .then((response) => {
-        // if (response.ok) { console.log("SUCCESS") } else { console.log("FAILURE") }
-        return response.json();
-      })
-      .then((data) => setDataProduct(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://6562048cdcd355c083247a65.mockapi.io/Products/ProductList", {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       // if (response.ok) { console.log("SUCCESS") } else { console.log("FAILURE") }
+  //       return response.json();
+  //     })
+  //     .then((data) => setDataProduct(data));
+  // }, []);
 
   //Page of 9 products
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(0)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${url}?skip=${(currentPage - 1) * itemsPerPage}&limit=${itemsPerPage}&category=${filterItem}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setDataProduct(data.products);
+        setMaxPage(data.totalCount)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, [currentPage, filterItem]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -140,22 +160,24 @@ const ProductList = () => {
   };
 
   // // Filter data products
-  let dataProductFilter = [...dataProduct];
-  if (New) {
-    dataProductFilter = dataProductFilter.filter((item) => item.newProduct);
-  }
-  if (sell) {
-    dataProductFilter = dataProductFilter.filter((item) => item.bestSeller);
-  }
-  const dataCategoryFilter = dataProductFilter.filter(
-    (item) => item.category === filterItem
-  );
-  const dataShow = dataCategoryFilter.slice(indexOfFirstItem, indexOfLastItem);
+  // let dataProductFilter = [...dataProduct];
+  // if (New) {
+  //   dataProductFilter = dataProductFilter.filter((item) => item.newProduct);
+  // }
+  // if (sell) {
+  //   dataProductFilter = dataProductFilter.filter((item) => item.bestSeller);
+  // }
+  // const dataCategoryFilter = dataProductFilter.filter(
+  //   (item) => item.category === filterItem
+  // );
+  // const dataShow = dataCategoryFilter.slice(indexOfFirstItem, indexOfLastItem);
+  // console.log(dataShow)
+  const dataShow = dataProduct
 
   //Max Page for Page of 9 Products
-  const maxPage = Math.ceil(dataCategoryFilter.length / itemsPerPage);
+  
   let pages = [];
-  for (let i = 1; i <= maxPage; i++) {
+  for (let i = 1; i <= maxPage/itemsPerPage; i++) {
     pages = [...pages, i];
   }
 
@@ -272,7 +294,7 @@ const ProductList = () => {
                       <figure>
                         <div
                           style={{ padding: "0 30px ", marginBottom: "10px" }}>
-                          <Link to={`/products/${item.category}/${item.id}`}>
+                          <Link to={`/products/${item.filterItem}/${item._id}`}>
                             <div
                               style={{
                                 borderRadius: "50% 50% 0 0",

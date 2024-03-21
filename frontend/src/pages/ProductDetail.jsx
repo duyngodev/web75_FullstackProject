@@ -5,6 +5,9 @@ import { useParams, useRoutes } from "react-router-dom";
 import '../components/nhandev/ProductDetail.scss'
 import '../components/nhandev/Swiper.scss'
 import ListSingleProduct from "../components/nhandev/ListSingleProduct.jsx";
+
+const url = "http://localhost:3001/product"
+
 const ProductDetail = () => {
 
   const [data, setData] = useState([]);
@@ -26,8 +29,9 @@ const ProductDetail = () => {
   //
   const getProductSingle = async () => {
     setLoading(true)
+    console.log(`url/${id}`)
     const result = await fetch(
-      `https://6562048cdcd355c083247a65.mockapi.io/Products/ProductList/${id}`,
+      `${url}/${id}`,
       {
         method: "GET",
       }

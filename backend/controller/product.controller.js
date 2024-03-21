@@ -2,8 +2,20 @@ import ProductModel  from "../model/product.model.js";
 import CartModel from "../model/cart.model.js";
 
 export const getAllProducts = async (req, res) => {
-  const products = await ProductModel.find();
-  res.status(200).send(products);
+  try {
+    const limit = req.query.limit;
+    const skip = req.query.skip;
+    const category = req.query.category;
+    
+    const totalCount = await ProductModel.countDocuments({ category });
+    
+    const products = await ProductModel.find({ category }).limit(limit).skip(skip);
+    
+    res.status(200).send({ products, totalCount });
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Internal Server Error');
+  }
 }
 
 export const createProduct = async (req, res) => {
@@ -17,20 +29,20 @@ export const createProduct = async (req, res) => {
     newProduct,
     bestSeller,
     quantity
-} = req.body;
-const newproduct = new ProductModel({
-  name,
-  price,
-  imgURL1,
-  imgURL2,
-  description,
-  category,
-  newProduct,
-  bestSeller,
-  quantity
-})
-const saveProduct = await newproduct.save();
-res.status(201).send(saveProduct);
+  } = req.body;
+  const newproduct = new ProductModel({
+    name,
+    price,
+    imgURL1,
+    imgURL2,
+    description,
+    category,
+    newProduct,
+    bestSeller,
+    quantity
+  })
+  const saveProduct = await newproduct.save();
+  res.status(201).send(saveProduct);
 }
 
 export const getProductById = async (req, res) => {
@@ -59,10 +71,10 @@ export const filterProduct = async (req, res) => {
   if (bestSeller !== undefined) {
     filter.bestSeller = bestSeller === 'true'; 
   }
-  console.log(category, newProduct, bestSeller, filter);
   try {
+    const totalCount = await ProductModel.countDocuments(filter);
     const products = await ProductModel.find(filter);
-    res.status(200).send(products);
+    res.status(200).send({products, totalCount});
   } catch (error) {
     res.status(500).send("Error filtering products: " + error.message);
   }
