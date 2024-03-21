@@ -9,14 +9,6 @@ import { validToken } from "./middlewares/validToken.middleware.js";
 import { tryCatch } from "./Utils/tryCatch.middleware.js";
 
 const app = express();
-
-app.use(
-  cors({
-    // credentails: true,
-    origin: ["http://localhost:3000", "http://localhost:5173"],
-  })
-);
-
 dotenv.config();
 app.use(
   cors({
