@@ -9,7 +9,6 @@ import { validToken } from "./middlewares/validToken.middleware.js";
 import { tryCatch } from "./Utils/tryCatch.middleware.js";
 
 const app = express();
-
 dotenv.config();
 app.use(
   cors({
@@ -22,6 +21,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 app.use(validToken);
+
 
 routeFactory(app);
 
