@@ -43,15 +43,15 @@ const Login = ({ prevLocation }) => {
         <Stack
           className="wrapper"
           sx={{
-            background: "transparent",
+            background: "#FFFFFF40",
             color: "#FFF",
             width: "40%",
             minWidth: { xs: "350px", sm: "450px" },
             padding: "30px 40px",
             borderRadius: "10px",
-            backdropFilter: "blur(40px)",
-            border: "2px solid #FFFFFF40",
-            boxShadow: "0 0 10px #00000020",
+            backdropFilter: "blur(60px)",
+            border: "2px solid #FFFFFF80",
+            boxShadow: "0 0 10px #FFFFFF20",
           }}>
           <Box
             component="form"
@@ -68,6 +68,15 @@ const Login = ({ prevLocation }) => {
               style={{
                 fontSize: "52px",
                 textAlign: "center",
+                color: "#FC294A",
+                textShadow: `-5px -5px 5px #fff,
+                0   -5px 5px #fff,
+                5px -5px 5px #fff,
+                5px  0  5px #fff,
+                5px  5px 5px #fff,
+                0    5px 5px #fff,
+               -5px  5px 5px #fff,
+               -5px  0   5px #fff`,
               }}>
               Login
             </h3>
@@ -212,7 +221,7 @@ const Login = ({ prevLocation }) => {
                 border: "none",
                 borderRadius: "40px",
                 backgroundColor: "#FFF",
-                margin: "10px 0",
+                margin: "15px 0 12px 0",
                 boxShadow: "0 0 10px #00000010",
                 fontWeight: "600",
                 color: "#333",
@@ -226,18 +235,19 @@ const Login = ({ prevLocation }) => {
             <Box
               className="register-link"
               sx={{
-                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}>
-              <p>
-                Don't have an account?
-                {/* <Navigate
-                  to="/login"
-                  sx={{
-                    color: "#FFF",
-                  }}>
-                  Register asdf
-                </Navigate> */}
-              </p>
+              <p style={{ margin: "0 50px 0 0" }}>Don't have an account? </p>
+              <Box
+                component="a"
+                href="/register"
+                sx={{
+                  color: "#FFF",
+                }}>
+                Register
+              </Box>
             </Box>
           </Box>
         </Stack>
@@ -245,7 +255,7 @@ const Login = ({ prevLocation }) => {
       <Box
         sx={{
           background:
-            "url('https://images.unsplash.com/photo-1604672857367-a0d662dfd7f2?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat",
+            "url('https://img.freepik.com/free-vector/candy-sweets-cakes-seamless-pattern-background-endless-tasty-cream-vector-illustration_1284-42446.jpg?w=740&t=st=1710606243~exp=1710606843~hmac=af12eb347adcd9e6721914fda8a08251754f6f5776819037ddd4d5c3f983b299') repeat",
           backgroundPosition: "cover",
           position: "absolute",
           inset: "0",
