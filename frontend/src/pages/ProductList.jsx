@@ -294,7 +294,7 @@ const ProductList = () => {
                       <figure>
                         <div
                           style={{ padding: "0 30px ", marginBottom: "10px" }}>
-                          <Link to={`/products/${item.filterItem}/${item._id}`}>
+                          <Link to={`/products/${filterItem}/${item._id}`}>
                             <div
                               style={{
                                 borderRadius: "50% 50% 0 0",
