@@ -12,7 +12,6 @@ const ProductDetail = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useContext(ApiStateContext)
-  const [listData, setListData] = useState([]);
   const [Examples, setExamples] = useState([]);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -22,14 +21,24 @@ const ProductDetail = () => {
   if (selectedProductId) {
     id = selectedProductId;
   }
-  const getExamples = () => {
-    const examples = listData.filter(item => item.category === data.category && item.id !== data.id);
-    setExamples(examples);
-  };
+
   //
-  const getProductSingle = async () => {
+  // const getProductSingle = async () => {
+  //   setLoading(true)
+  //   const result = await fetch(
+  //     `${url}/${id}`,
+  //     {
+  //       method: "GET",
+  //     }
+  //   );
+    
+  //   const jsonRes = await result.json();
+  //   setData(jsonRes.product);
+  //   setLoading(false);
+  // };
+
+  const getProducts = async () => {
     setLoading(true)
-    console.log(`url/${id}`)
     const result = await fetch(
       `${url}/${id}`,
       {
@@ -37,35 +46,21 @@ const ProductDetail = () => {
       }
     );
     const jsonRes = await result.json();
-    setData(jsonRes);
-    setLoading(false);
-  };
-  const getProducts = async () => {
-    setLoading(true)
-    const result = await fetch(
-      `https://6562048cdcd355c083247a65.mockapi.io/Products/ProductList`,
-      {
-        method: "GET",
-      }
-    );
-    const jsonRes = await result.json();
-    setListData(jsonRes);
+    setData(jsonRes.product);
+    let exampleList = jsonRes.examples;
+    exampleList = exampleList.filter((item) => item._id != id) //filter out duplicates
+    setExamples(exampleList);
     setLoading(false);
   };
 
   useEffect(() => {
-    getProductSingle();
     getProducts();
   }, []);
-  useEffect(() => {
-    if (selectedProductId) {
-      getProductSingle();
-    }
-  }, [selectedProductId])
-  useEffect(() => {
-    getExamples();
 
-  }, [data, listData]);
+  // useEffect(() => {
+  //   getExamples();
+  // }, [data, listData]);
+
   return (
     <>
       <div id="wrapper3">
@@ -80,13 +75,9 @@ const ProductDetail = () => {
             </div>
           </section>
           <SingleProduct setData={setData} data={data} />
-          <ListSingleProduct setData={setExamples} data={Examples} setSelectedProductId={setSelectedProductId} />
+          <ListSingleProduct data={Examples} setSelectedProductId={setSelectedProductId} />
         </main>
       </div>
-
-
-
-
     </>
   )
 }
