@@ -18,7 +18,7 @@ const Login = ({ prevLocation }) => {
     const password = inputPassword.current.value;
     await axios
       .post(
-        `http://localhost:3001/user/login`,
+        `https://backendtestdn.onrender.com/user/login`,
         { email, password },
         { withCredentials: true } // NEED TO CORS with coookies
       )

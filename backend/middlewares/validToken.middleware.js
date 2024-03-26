@@ -43,7 +43,8 @@ const validToken = async (req, res, next) => {
   );
   res.cookie("access_token", newAccessToken, {
     maxAge: 300000,
-    httpOnly: true,
+    secure: true,
+    // httpOnly: true,
   });
   const decoded = verifyJWT(newAccessToken, process.env.ACCESS_KEY).payload;
   req.user = {

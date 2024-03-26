@@ -22,7 +22,7 @@ const Register = () => {
     const password = passwordRef.current.value;
     const repeatPassword = repeatPasswordRef.current.value;
     await axios
-      .post("http://localhost:3001/user/register", {
+      .post("https://backendtestdn.onrender.com/user/register", {
         name,
         email,
         password,
