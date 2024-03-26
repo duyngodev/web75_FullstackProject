@@ -1,5 +1,5 @@
 import express from "express";
-import { tryCatch } from "../middlewares/tryCatch.middleware.js";
+import { tryCatch } from "../Utils/tryCatch.middleware.js";
 const paymentRouter = express.Router();
 
 paymentRouter

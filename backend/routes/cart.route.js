@@ -9,20 +9,21 @@ import {
   payCart,
   cancelPayProduct,
   getAllCart,
+  deleteAllCart
 } from "../controller/cart.controller.js";
 
 const cartRouter = express.Router();
 cartRouter
   .route("/")
   .get(tryCatch(getAllCart))
-  .post()
+  .post(tryCatch(payCart))
   .put()
-  .delete();
+  .delete(tryCatch(deleteAllCart));
 cartRouter
   .route("/:cartId")
   .get(tryCatch(getCartById))
   .post()
-  .put(tryCatch(payCart))
+  .put()
   .delete();
 cartRouter
   .route("/:cartId/:productId")

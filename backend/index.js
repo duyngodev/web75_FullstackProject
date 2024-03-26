@@ -18,11 +18,9 @@ app.use(morgan("combined"));
 app.use(validToken);
 
 app.use(
-  cors({
-    credentails: true,
-    origin: "http://localhost:3000",
-  })
+  cors()
 );
+
 
 routeFactory(app);
 

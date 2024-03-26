@@ -1,4 +1,6 @@
 import cartModel from "../model/cart.model.js";
+import productInCartModel from "../model/productInCart.model.js";
+import mongoose from 'mongoose';
 
 export const getAllCart = async (req, res, next) => {
   try {
@@ -61,11 +63,31 @@ export const getCartById = async (req, res, next) => {
 
 export const payCart = async (req, res, next) => {
   try {
-    
+    // 1. Lấy thông tin từ yêu cầu
+    const { idProductInCart, totalQuantity, discount, idUser, totalPrice } = req.body;
+    console.log(idProductInCart, totalQuantity, discount, idUser, totalPrice);
+    // 2. Tạo mới giỏ hàng
+    const newCart = await cartModel.create({
+      _id: new mongoose.Types.ObjectId(),
+      idProductInCart,
+      idUser,
+      totalQuantity,
+      discount,
+      totalPrice
+    });
+
+    // 3. Lưu giỏ hàng vào cơ sở dữ liệu
+    const savedCart = await newCart.save();
+
+    // 4. Trả về kết quả
+    return res.status(200).json({ message: "Cart created successfully", cart: savedCart });
   } catch (error) {
+    // Xử lý lỗi nếu có
     next(error);
   }
 };
+
+
 export const cancelPayProduct = async (req, res, next) => {
     try {
       
@@ -74,4 +96,11 @@ export const cancelPayProduct = async (req, res, next) => {
     }
 };
 
-
+export const deleteAllCart = async (req, res, next) => {
+  try {
+    const deletedItems = await cartModel.deleteMany({});
+    return res.status(200).json({ message: "Xóa giỏ hàng thành công", deletedItems });
+  } catch (error) {
+    next(error);
+  }
+};

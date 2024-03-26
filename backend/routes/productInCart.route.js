@@ -1,6 +1,6 @@
 import express from "express";
-import { tryCatch } from "../middlewares/tryCatch.middleware.js";
-import {getProductInCartById} from"../controller/productInCart.controller.js"
+import { tryCatch } from "../Utils/tryCatch.middleware.js";
+import {getProductInCartById, deleteAllProductInCart} from"../controller/productInCart.controller.js"
 const productInCartRouter = express.Router();
 
 productInCartRouter
@@ -8,7 +8,7 @@ productInCartRouter
     .get()
     .post()
     .put()
-    .delete();
+    .delete(tryCatch(deleteAllProductInCart));
 productInCartRouter
   .route("/:productInCartId")
   .get(getProductInCartById)

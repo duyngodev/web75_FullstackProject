@@ -4,24 +4,19 @@ import {
   getAllProduct,
   getProductById,
   buyProduct,
+  deleteProductInCartById
 } from "../controller/product.controller.js";
-import {
-  getCartById,
-  payCart,
-  cancelPayProduct,
-} from "../controller/cart.controller.js";
-
 const productRouter = express.Router();
 productRouter
   .route("/")
   .get(tryCatch(getAllProduct))
-  .post()
+  .post(tryCatch(buyProduct))
   .put()
-  .delete();
+  .delete(tryCatch(deleteProductInCartById));
 productRouter
   .route("/:productId")
   .get(tryCatch(getProductById))
-  .post(tryCatch(buyProduct))
+  .post()
   .put()
   .delete();
 export { productRouter };
