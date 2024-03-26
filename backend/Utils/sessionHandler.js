@@ -12,10 +12,8 @@ export async function getSession(_id) {
   return session && session.valid ? session : null;
 }
 
+
 export async function invalidateSession(_id) {
-  const session = await SessionModel.findOneAndUpdate(
-    { _id },
-    { isValid: false }
-  );
-  return session;
+  await SessionModel.findOneAndUpdate({ _id }, { isValid: false });
 }
+

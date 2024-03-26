@@ -10,16 +10,17 @@ const cartSchema = mongoose.Schema({
     ref: 'User'
   },
   discount: {
-    type: Number
+    type: Number,
   },
   totalPrice: {
-    type: Number
+    type: Number,
   },
   totalQuantity: {
-    type: Number
-  }
+    type: Number,
+  },
 });
 
 const CartModel = mongoose.model("Cart", cartSchema);
 
 export default CartModel;
+

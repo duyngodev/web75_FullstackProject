@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const productSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
   },
@@ -28,7 +27,7 @@ const productSchema = mongoose.Schema({
   },
   quantity: {
     type: Number,
-  }
+  },
 });
 
 const productModel = mongoose.model("Product", productSchema);
