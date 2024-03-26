@@ -48,10 +48,16 @@ export const createProduct = async (req, res) => {
 export const getProductById = async (req, res) => {
   const productId = req.params.productId;
   const product = await ProductModel.findById(productId);
+
+  const limit = 6;
+  const skip = 0;
+  const category = product.category;
+  
+  const examples = await ProductModel.find({ category }).limit(limit).skip(skip);
   if (!product) {
     return res.status(404).send("Product not found");
   }
-  res.status(200).send(product);
+  res.status(200).send({product, examples});
 };
 
 export const buyProduct = async (req, res) => {
