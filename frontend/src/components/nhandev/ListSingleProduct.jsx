@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ApiStateContext } from "./ApiStateProvider";
 
-const ListSingleProduct = ({ data, setSelectedProductId  }) => {
+const ListSingleProduct = ({ data, setData, setSelectedProductId  }) => {
 
    const [loading, setLoading] = useContext(ApiStateContext);
    const limitedData = data.slice(0, 5);

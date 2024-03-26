@@ -1,12 +1,7 @@
 import express from "express";
-import { getAllProducts, createProduct, getProductById, buyProduct, filterProduct } from "../controller/product.controller.js";
+import { getAllProduct,getAllProducts, createProduct, getProductById, buyProduct, filterProduct } from "../controller/product.controller.js";
 import { tryCatch } from "../Utils/tryCatch.middleware.js";
-import {
-  getAllProduct,
-  getProductById,
-  buyProduct,
-  deleteProductInCartById
-} from "../controller/product.controller.js";
+import {deleteAllProductInCart} from "../controller/productInCart.controller.js"
 const productRouter = express.Router();
 
 productRouter.get("/filter", tryCatch(filterProduct))
@@ -16,7 +11,7 @@ productRouter
   .get(tryCatch(getAllProduct))
   .post(tryCatch(buyProduct))
   .put()
-  .delete(tryCatch(deleteProductInCartById));
+  .delete(tryCatch(deleteAllProductInCart));
 productRouter
   .route("/:productId")
     .get(tryCatch(getProductById))
