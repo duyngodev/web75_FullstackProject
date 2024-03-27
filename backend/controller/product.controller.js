@@ -1,5 +1,13 @@
-import ProductModel  from "../model/product.model.js";
-import CartModel from "../model/cart.model.js";
+import productModel from "../model/product.model.js";
+import productInCartModel from "../model/productInCart.model.js";
+export const getAllProduct = async (req, res, next) => {
+  try {
+    const products = await productModel.find();
+    res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const getAllProducts = async (req, res) => {
   try {

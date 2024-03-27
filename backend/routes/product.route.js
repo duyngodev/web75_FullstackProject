@@ -1,22 +1,22 @@
 import express from "express";
-import { getAllProducts, createProduct, getProductById, buyProduct, filterProduct } from "../controller/product.controller.js";
+import { getAllProduct,getAllProducts, createProduct, getProductById, buyProduct, filterProduct } from "../controller/product.controller.js";
 import { tryCatch } from "../Utils/tryCatch.middleware.js";
-import {
-  getCartById,
-  payCart,
-  cancelPayProduct,
-} from "../controller/cart.controller.js";
-
-
+import {deleteAllProductInCart} from "../controller/productInCart.controller.js"
 const productRouter = express.Router();
 
 productRouter.get("/filter", tryCatch(filterProduct))
 
 productRouter
+  .route("/")
+  .get(tryCatch(getAllProduct))
+  .post(tryCatch(buyProduct))
+  .put()
+  .delete(tryCatch(deleteAllProductInCart));
+productRouter
   .route("/:productId")
     .get(tryCatch(getProductById))
     .post()
-    .put(tryCatch(buyProduct))
+    .put()
     .delete();
 
 

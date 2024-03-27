@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ApiStateContext } from "./ApiStateProvider";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, toggleAddedToCart, saveProductToDatabase  } from "./actions";
 
-const SingleProduct = ({ data, setData, getProduct }) => {
-
-  const [loading, setLoading] = useContext(ApiStateContext);
-  const [quantity, setQuantity] = useState(1);
+const SingleProduct = ({ data }) => {
+  const dispatch = useDispatch();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  
-  
+  const [quantity, setQuantity] = useState(1);
+
   const handleAddToCart = () => {
     const productToStore = {
       id: data.id,
@@ -22,34 +21,86 @@ const SingleProduct = ({ data, setData, getProduct }) => {
       quantity: data.quantity,
       quantityInCart: quantity,
     };
-    // Retrieve existing cart data from local storage
-    const existingCartData = JSON.parse(localStorage.getItem("cart")) || [];
-    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-    const existingProductIndex = existingCartData.findIndex(item => item.id === data.id);
-    // Add the new product to the cart data
-    if (existingProductIndex !== -1) {
-      // Nếu sản phẩm đã tồn tại, cộng thêm quantityInCart
-      existingCartData[existingProductIndex].quantityInCart += quantity;
-    } else {
-      // Nếu sản phẩm chưa tồn tại, thêm sản phẩm vào giỏ hàng
-      existingCartData.push(productToStore);
-    }
-
-    localStorage.setItem("cart", JSON.stringify(existingCartData));
-
-    // Hiển thị thông báo và cập nhật trạng thái isAddedToCart
-    console.log("Product added to cart:", productToStore);
+    console.log(productToStore);
+    dispatch(addToCart(productToStore));
+    dispatch(toggleAddedToCart());
+    dispatch(saveProductToDatabase(productToStore));
+    setQuantity(1);
     setIsAddedToCart(true);
-  }
-
+  };
+  
   useEffect(()=>{
     setQuantity(1);
     setIsAddedToCart(false);
-  },[data])
+  },[data]);
 
+//   const [loading, setLoading] = useContext(ApiStateContext);
+
+//   const [quantity, setQuantity] = useState(1);
+
+//   const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  
+
+  
+//   const handleAddToCart = () => {
+//     const productToStore = {
+//       id: data.id,
+
+//   const SingleProduct = ({ data, setData, getProduct }) => {
+//       quantity: data.quantity,
+//       quantityInCart: quantity,
+//     };
+
+//     // Retrieve existing cart data from local storage
+
+//     const existingCartData = JSON.parse(localStorage.getItem("cart")) || [];
+
+//     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+
+//     const existingProductIndex = existingCartData.findIndex(item => item.id === data.id);
+
+//     // Add the new product to the cart data
+
+//     if (existingProductIndex !== -1) {
+
+//       // Nếu sản phẩm đã tồn tại, cộng thêm quantityInCart
+
+//       existingCartData[existingProductIndex].quantityInCart += quantity;
+
+//     } else {
+
+//       // Nếu sản phẩm chưa tồn tại, thêm sản phẩm vào giỏ hàng
+
+//       existingCartData.push(productToStore);
+
+//     }
+
+
+
+//     localStorage.setItem("cart", JSON.stringify(existingCartData));
+
+
+
+//     // Hiển thị thông báo và cập nhật trạng thái isAddedToCart
+
+//     console.log("Product added to cart:", productToStore);
+
+//     setIsAddedToCart(true);
+
+//   }
+
+
+
+//   useEffect(()=>{
+
+//     setQuantity(1);
+
+//     setIsAddedToCart(false);
+
+//   },[data])
   return (
     <>
-
       <section className="section_product1">
         <div className="container">
           <div className="row">
@@ -147,7 +198,6 @@ const SingleProduct = ({ data, setData, getProduct }) => {
                 </div>
               </div>
               <div className="w-100 khungslidercon">
-
                 <div className="w-100 khungslidercon1">
                   <div className="swiper-container gallery-thumbs swiper-container-horizontal">
                     <div className="swiper-wrapper" ><div className="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-prev" data-swiper-slide-index="0" >
@@ -172,12 +222,8 @@ const SingleProduct = ({ data, setData, getProduct }) => {
                         </div>
                       </div></div>
                     <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-
-
                 </div>
               </div>
-
-
               <div className="w-100 colbottomright">
                 <div className="motadetailsp w-100">
                   {data.description}</div>
@@ -189,7 +235,6 @@ const SingleProduct = ({ data, setData, getProduct }) => {
                     </>
                   )}
                 </div>
-
                 <div className="w-100" >
                   <a
                     id="ditoigiohang"
@@ -198,12 +243,8 @@ const SingleProduct = ({ data, setData, getProduct }) => {
                   >Đi tới giỏ hàng <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
               </div>
-
-
             </div>
           </div>
-
-
         </div>
       </section>
     </>
@@ -211,3 +252,4 @@ const SingleProduct = ({ data, setData, getProduct }) => {
 };
 
 export default SingleProduct;
+

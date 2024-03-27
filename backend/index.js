@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 app.use(validToken);
 
-
 routeFactory(app);
 
 mongoose.connect(process.env.MONGO_URI).then(
