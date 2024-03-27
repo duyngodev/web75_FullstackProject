@@ -4,7 +4,12 @@ import { tryCatch } from "../Utils/tryCatch.middleware.js";
 import {deleteAllProductInCart} from "../controller/productInCart.controller.js"
 const productRouter = express.Router();
 
-productRouter.get("/filter", tryCatch(filterProduct))
+productRouter
+.route("/filter")
+  .get(tryCatch(getAllProducts))
+  .post(tryCatch(createProduct))
+  .put()
+  .delete();
 
 productRouter
   .route("/")
@@ -12,6 +17,7 @@ productRouter
   .post(tryCatch(buyProduct))
   .put()
   .delete(tryCatch(deleteAllProductInCart));
+
 productRouter
   .route("/:productId")
     .get(tryCatch(getProductById))
@@ -19,13 +25,6 @@ productRouter
     .put()
     .delete();
 
-
-productRouter
-  .route("/")
-    .get(tryCatch(getAllProducts))
-    .post(tryCatch(createProduct))
-    .put()
-    .delete();
 
 
 export { productRouter };

@@ -138,7 +138,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${url}?skip=${(currentPage - 1) * itemsPerPage}&limit=${itemsPerPage}&category=${filterItem}`);
+        const response = await fetch(`${url}/filter/?skip=${(currentPage - 1) * itemsPerPage}&limit=${itemsPerPage}&category=${filterItem}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

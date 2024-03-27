@@ -14,6 +14,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useContext(ApiStateContext)
   const [Examples, setExamples] = useState([]);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [category, setCategory] = useState('');
 
 
   let id = useParams().id
@@ -47,6 +48,7 @@ const ProductDetail = () => {
     );
     const jsonRes = await result.json();
     setData(jsonRes.product);
+    setCategory(jsonRes.product.category);
     let exampleList = jsonRes.examples;
     exampleList = exampleList.filter((item) => item._id != id) //filter out duplicates
     setExamples(exampleList);
@@ -69,7 +71,7 @@ const ProductDetail = () => {
             <div className="container">
               <div className="title_cattintuc w-100">
                 <h2><img src="https://www.sugartown.vn/img/muiten.png" alt="G3-BAKERY" />
-                  <a href="/products">Tất cả sản phẩm</a>
+                  <a href={`/products/${category}`}>Tất cả sản phẩm</a>
                 </h2>
               </div>
             </div>
