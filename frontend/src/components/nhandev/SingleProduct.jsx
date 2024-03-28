@@ -6,10 +6,11 @@ const SingleProduct = ({ data }) => {
   const dispatch = useDispatch();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
+  const userId = useSelector((state) => state.singleProduct.userId);
+  
   const handleAddToCart = () => {
     const productToStore = {
-      id: data.id,
+      id: data._id,
       name: data.name,
       price: data.price,
       img1: data.imgURL1,
@@ -20,6 +21,7 @@ const SingleProduct = ({ data }) => {
       bestSeller: data.bestSeller,
       quantity: data.quantity,
       quantityInCart: quantity,
+      userId: userId,
     };
     console.log(productToStore);
     dispatch(addToCart(productToStore));
@@ -28,6 +30,7 @@ const SingleProduct = ({ data }) => {
     setQuantity(1);
     setIsAddedToCart(true);
   };
+  
   
   useEffect(()=>{
     setQuantity(1);

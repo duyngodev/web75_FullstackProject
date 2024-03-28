@@ -70,7 +70,36 @@ export const getProductById = async (req, res) => {
 };
 
 export const buyProduct = async (req, res) => {
-  //TODO
+  try {
+    console.log(req.body);
+    const productId = req.body.productId;
+    const quantityInCart = req.body.quantityInCart;
+    const userId = req.body.userId; // Lấy userId từ req
+    console.log(userId);
+    // Kiểm tra xem có sản phẩm nào của userId đó trong giỏ hàng không
+    let productInCart = await productInCartModel.findOne({ productId, userId });
+
+    if (productInCart) {
+      // Nếu có, kiểm tra xem số lượng sản phẩm đã có trong giỏ hàng
+      // Nếu có, tăng số lượng lên
+      productInCart.quantityInCart += parseInt(quantityInCart);
+    } else {
+      // Nếu không, tạo sản phẩm mới trong giỏ hàng
+      productInCart = await productInCartModel.create({
+        productId,
+        quantityInCart,
+        userId: userId, // Lưu userId vào sản phẩm trong giỏ hàng mới
+      });
+    }
+    // Lưu thay đổi vào cơ sở dữ liệu
+    await productInCart.save();
+    // Trả về kết quả thành công
+    res.status(201).json({ message: "Product added to cart successfully" });
+  } catch (error) {
+    // Xử lý lỗi nếu có
+    console.error("Error adding product to cart:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 export const filterProduct = async (req, res) => {

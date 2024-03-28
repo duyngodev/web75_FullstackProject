@@ -64,16 +64,21 @@ export const getCartById = async (req, res, next) => {
 export const payCart = async (req, res, next) => {
   try {
     // 1. Lấy thông tin từ yêu cầu
-    const { idProductInCart, totalQuantity, discount, idUser, totalPrice } = req.body;
-    console.log(idProductInCart, totalQuantity, discount, idUser, totalPrice);
+    const { idProductInCart, totalQuantity, discount, userId, totalPrice } = req.body;
+    
     // 2. Tạo mới giỏ hàng
+    const cartItems = idProductInCart.map(item => ({
+      productId: item.productId,
+      quantityInCart: item.quantity
+    }));
+
     const newCart = await cartModel.create({
       _id: new mongoose.Types.ObjectId(),
-      idProductInCart,
-      idUser,
-      totalQuantity,
-      discount,
-      totalPrice
+      idProductInCart: cartItems,
+      userId: userId,
+      totalQuantity: totalQuantity,
+      discount: discount,
+      totalPrice: totalPrice
     });
 
     // 3. Lưu giỏ hàng vào cơ sở dữ liệu
@@ -86,6 +91,9 @@ export const payCart = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
 
 
 export const cancelPayProduct = async (req, res, next) => {

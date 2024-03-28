@@ -6,6 +6,7 @@ import {
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
   PAY_CART,
+  SET_USER
 } from "./actionTypes";
 import axios from "axios";
 import mongoose from 'mongoose';
@@ -13,6 +14,7 @@ import mongoose from 'mongoose';
 axios.defaults.baseURL = "http://localhost:3001";
 const sendProductDataToServer = async (productData) => {
   try {
+
     const response = await axios.post("/product", productData);
     console.log("Product saved to database:", response.data);
     return response.data;
@@ -21,6 +23,7 @@ const sendProductDataToServer = async (productData) => {
     throw error;
   }
 };
+
 export const saveProductToDatabase = (productData) => async (dispatch) => {
   try {
     // Thay đổi trường productId thành id
@@ -29,38 +32,38 @@ export const saveProductToDatabase = (productData) => async (dispatch) => {
 
     console.log(modifiedProductData);
     await sendProductDataToServer(modifiedProductData);
-    // dispatch({ type: ADD_TO_CART, payload: response.data });
+    // Nếu lưu dữ liệu thành công, không cần dispatch ADD_TO_CART
   } catch (error) {
     console.error("Error saving product to database:", error);
+    // Xử lý lỗi ở đây nếu cần thiết
   }
 };
 
-// Hàm helper để tăng số lượng sản phẩm
-export const increaseQuantity = (productId) => async (dispatch) => {
+
+export const increaseQuantity = (productId, userId) => async (dispatch) => {
   try {
     // Lấy thông tin sản phẩm từ server (ở đây chỉ giả sử là productId)
-    const productData = { productId, quantityInCart: 1 };
+    const productData = { productId, userId, quantityInCart: 1 };
     await sendProductDataToServer(productData);
     // Dispatch action tăng số lượng sản phẩm
     dispatch({
       type: INCREASE_QUANTITY,
-      payload: productId,
+      payload: { productIdToIncrease: productId, userIdToIncrease: userId },
     });
   } catch (error) {
     console.error("Error increasing quantity:", error);
   }
 };
 
-// Hàm helper để giảm số lượng sản phẩm
-export const decreaseQuantity = (productId) => async (dispatch) => {
+export const decreaseQuantity = (productId, userId) => async (dispatch) => {
   try {
     // Lấy thông tin sản phẩm từ server (ở đây chỉ giả sử là productId)
-    const productData = { productId, quantityInCart: -1 };
+    const productData = { productId, userId, quantityInCart: -1 };
     await sendProductDataToServer(productData);
     // Dispatch action giảm số lượng sản phẩm
     dispatch({
       type: DECREASE_QUANTITY,
-      payload: productId,
+      payload: { productIdToDecrease: productId, userIdToDecrease: userId },
     });
   } catch (error) {
     console.error("Error decreasing quantity:", error);
@@ -85,27 +88,31 @@ export const payCart = (productData) => async (dispatch) => {
   try {
     // Chuyển đổi cấu trúc của productData
     const transformedData = {
-      // idProductInCart: productData.idProductInCart.map(id => mongoose.Types.ObjectId(id)),
+      idProductInCart: productData.idProductInCart,
       totalQuantity: productData.totalQuantity,
       discount: productData.discount,
-      idUser: productData.idUser,
+      userId: productData.userId,
       totalPrice: productData.totalPrice
     };
     console.log(transformedData);
-    // Gửi yêu cầu POST với dữ liệu đã chuyển đổi
-    await axios.post(`/cart`, transformedData);
-
     // Dispatch action xóa sản phẩm khỏi giỏ hàng
     dispatch({
       type: PAY_CART,
       payload: transformedData,
     });
+    // Gửi yêu cầu POST với dữ liệu đã chuyển đổi
+    await axios.post(`/cart`, transformedData);
+    await axios.delete('/productInCart');
+    
   } catch (error) {
     console.error("Error removing product from cart:", error);
   }
 };
 
-
+export const setUser = (userId) => ({
+  type: SET_USER,
+  payload: userId,
+});
 
 export const addToCart = (product) => ({
   type: ADD_TO_CART,

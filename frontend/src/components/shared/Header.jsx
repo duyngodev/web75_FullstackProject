@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const link = "https://backendtestdn.onrender.com/user/logout";
+const link = "http://localhost:3001/user/logout";
 const pages = [
   "Home",
   "Service/CategoryListPage",

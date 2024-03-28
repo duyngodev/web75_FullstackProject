@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import singleProductReducer from "./reducer.js";
+import singleProductReducer from "./reducer";
 
 const persistConfig = {
   key: "root",
