@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ApiStateContext } from "./ApiStateProvider";
 
-const ListSingleProduct = ({ data, setData, setSelectedProductId  }) => {
+const ListSingleProduct = ({ data, category, setSelectedProductId  }) => {
 
    const [loading, setLoading] = useContext(ApiStateContext);
-   const limitedData = data.slice(0, 5);
+   const limitedData = data;
+   data.map(product => {console.log(product._id)})
    return (
       <>
          <section className="section_product2">
@@ -27,21 +28,21 @@ const ListSingleProduct = ({ data, setData, setSelectedProductId  }) => {
                               <div className="product--image__inner">
                                  <div className="pro_img imgsp1 imgsp11">
                                     <a onClick={() => {
-                                       setSelectedProductId(product.id);
+                                       setSelectedProductId(product._id);
                                        }}>
                                        <img className="image-product-detail" src={product.imgURL1} alt="G3-BAKERY" />
                                     </a>
                                  </div>
                               </div>
                               <div className="datmua">
-                                 <a className="add_to_cart" data-id={product.id} onClick={() => {
-                                       setSelectedProductId(product.id);
-                                       }}>Xem chi tiết</a>
+                                 <a className="add_to_cart" data-id={product._id} href = 
+                                       {`/products/${category}/${product._id}`}
+                                       >Xem chi tiết</a>
                               </div>
                            </figure>
                            <figcaption>
                               <h3><a onClick={() => {
-                                       setSelectedProductId(product.id);
+                                       setSelectedProductId(product._id);
                                        }} >{product.name}</a></h3>
                               <span>{Number(product.price).toLocaleString()} đ</span>
                            </figcaption>
@@ -65,19 +66,19 @@ const ListSingleProduct = ({ data, setData, setSelectedProductId  }) => {
                                        <div className="product--image__inner">
                                           <div className={`pro_img imgsp1 imgsp11`}>
                                              <a onClick={() => {
-                                       setSelectedProductId(product.id);
+                                       setSelectedProductId(product._id);
                                        }}><img className="image-product-detail" src={product.imgURL1} alt="G3-BAKERY" /></a>
                                           </div>
                                        </div>
                                        <div className="datmua">
-                                          <a className="add_to_cart" data-id={product.id} onClick={() => {
-                                       setSelectedProductId(product.id);
-                                       }}>Xem chi tiet</a>
+                                          <a className="add_to_cart" data-id={product._id} onClick={() => {
+                                          setSelectedProductId(product._id);
+                                          }}>Xem chi tiet</a>
                                        </div>
                                     </figure>
                                     <figcaption>
                                        <h3><a onClick={() => {
-                                       setSelectedProductId(product.id);
+                                       setSelectedProductId(product._id);
                                        }}>{product.name}</a></h3>
                                        <span>{Number(product.price).toLocaleString()} đ</span>
                                     </figcaption>

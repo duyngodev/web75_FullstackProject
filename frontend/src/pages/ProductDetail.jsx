@@ -5,6 +5,7 @@ import { useParams, useRoutes } from "react-router-dom";
 import '../components/nhandev/ProductDetail.scss'
 import '../components/nhandev/Swiper.scss'
 import ListSingleProduct from "../components/nhandev/ListSingleProduct.jsx";
+import { selectClasses } from "@mui/material";
 
 const url = "http://localhost:3001/product"
 
@@ -18,10 +19,11 @@ const ProductDetail = () => {
 
 
   let id = useParams().id
-  // setSelectedProductId(useParams);
-  if (selectedProductId) {
-    id = selectedProductId;
-  }
+  // setSelectedProductId(id);
+  console.log(selectedProductId)
+  // if (selectedProductId) {
+  //   id = selectedProductId;
+  // }
 
   //
   // const getProductSingle = async () => {
@@ -59,6 +61,9 @@ const ProductDetail = () => {
     getProducts();
   }, []);
 
+  const updateID = (newId) => {
+    id = newId;
+  };
   // useEffect(() => {
   //   getExamples();
   // }, [data, listData]);
@@ -77,7 +82,7 @@ const ProductDetail = () => {
             </div>
           </section>
           <SingleProduct setData={setData} data={data} />
-          <ListSingleProduct data={Examples} setSelectedProductId={setSelectedProductId} />
+          <ListSingleProduct data={Examples} category={category} setSelectedProductId={updateID} />
         </main>
       </div>
     </>
