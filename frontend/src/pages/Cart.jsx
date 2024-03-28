@@ -62,41 +62,48 @@ const Cart = (props) => {
     };
     console.log(payCartData);
     setShowPayPal(true); // Hiển thị nút PayPal khi người dùng nhấn vào nút "Thanh Toán"
-    // dispatch(payCart(payCartData));
+    setPayCartData(payCartData); // Lưu dữ liệu vào state để sử dụng sau này
+    //dispatch(payCart(payCartData));
   };
   
   const [showPayPal, setShowPayPal] = useState(false); // State để kiểm soát hiển thị nút PayPal
+  const [payCartData, setPayCartData] = useState(null); // State để lưu thông tin đơn hàng
+  
   const PayPalButton = () => {
-
-      const clientId = "AUTq0U905YZSDCsB_j7U1qgrCM1I9Rv9rDnEMg-rp5uF014Xv7FM1OnMJ17g0jiibfSVkwy50sDC88Y9";
-
-      return (
-        <PayPalScriptProvider options={{ "client-id": clientId }}>
-          <PayPalButtons
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: totalPrice,
-                      currency_code: "VND",
-                    },
-                    description: "Thanh toán giỏ hàng",
+    const clientId = "AUTq0U905YZSDCsB_j7U1qgrCM1I9Rv9rDnEMg-rp5uF014Xv7FM1OnMJ17g0jiibfSVkwy50sDC88Y9";
+    var totalPriceVND = Math.round(totalPrice / 24 * 100) / 100;
+    return (
+      <PayPalScriptProvider options={{ "client-id": clientId }}>
+        <PayPalButtons
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: totalPriceVND,
+                    currency_code: "USD",
                   },
-                ],
-              });
-            }}
-            onApprove={(data, actions) => {
-              return actions.order.capture().then(function (details) {
-                // Thực hiện xử lý sau khi thanh toán thành công
-                console.log(details);
-              });
-            }}
-          />
-        </PayPalScriptProvider>
-      );
+                  description: "Thanh toán giỏ hàng",
+                },
+              ],
+            });
+          }}
+          onApprove={(data, actions) => {
+            // Thực hiện dispatch sau khi thanh toán được xác nhận
+            if (payCartData) {
+              dispatch(payCart(payCartData));
+            }
+            // Thực hiện xử lý sau khi thanh toán thành công
+            console.log(data);
+            return actions.order.capture().then(function (details) {
+              console.log(details);
+            });
+          }}
+        />
+      </PayPalScriptProvider>
+    );
   };
-
+  
   const theme = createTheme({
     palette: {
       ochre: {
