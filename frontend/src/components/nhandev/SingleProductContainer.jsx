@@ -3,6 +3,7 @@ import SingleProduct from './SingleProduct';
 import { addToCart, resetQuantity, toggleAddedToCart } from './actions';
 
 const mapStateToProps = (state) => ({
+  userId: state.SingleProduct.userId,
   quantity: state.singleProduct.quantity,
   isAddedToCart: state.singleProduct.isAddedToCart,
 });

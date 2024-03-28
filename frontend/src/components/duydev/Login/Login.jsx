@@ -5,27 +5,34 @@ import LockPersonIcon from "@mui/icons-material/LockPerson";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../../nhandev/actions.jsx";
 const Login = ({ prevLocation }) => {
   // State config
   const inputEmail = useRef();
   const inputPassword = useRef();
   const [errType, setErrType] = useState([]);
-
+  const dispatch = useDispatch();
   const submitHandler = async (e) => {
+    
     e.preventDefault();
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
+    console.log(email, password);
     await axios
       .post(
-        `https://backendtestdn.onrender.com/user/login`,
+        `http://localhost:3001/user/login`,
         { email, password },
         { withCredentials: true } // NEED TO CORS with coookies
       )
-      .then(() => {
+      
+      .then((response) => {
+        const { userId } = response.data; // Lấy userId từ response
+        dispatch(setUser(userId));
         setErrType([]);
         window.location.href = !prevLocation ? "/home" : `${prevLocation}`;
       })
+      
       .catch((err) => {
         setErrType(err.response.data);
       });

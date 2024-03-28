@@ -48,7 +48,7 @@ const userLogin = async (req, res) => {
     // path: "/",
     // httpOnly: true,
   });
-  res.send(session);
+  res.send({ userId: user._id, session });
 };
 
 // logout

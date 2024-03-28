@@ -40,7 +40,9 @@ function routeFactory(app) {
       app.use(route.path, route.router); //public route
     }
     if ((route.path === "/cart")) {
-      app.use(route.path, requireUser, route.router); //private route
+      //hàm requireUser không đúng, ko thanh toán đc
+      //app.use(route.path, requireUser, route.router); //private route
+      app.use(route.path, route.router); //private route
     }
     if ((route.path === "/product")) {
       app.use(route.path, route.router);
@@ -48,7 +50,7 @@ function routeFactory(app) {
     if ((route.path === "/payment")) {
       app.use(route.path, route.router);
     }
-    if ((route.path === "/productInCartRouter")) {
+    if ((route.path === "/productInCart")) {
       app.use(route.path, route.router);
     }
   });

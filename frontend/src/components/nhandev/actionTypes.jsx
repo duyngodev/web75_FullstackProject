@@ -5,3 +5,4 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const INCREASE_QUANTITY  = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY  = 'DECREASE_QUANTITY';
 export const PAY_CART  = 'PAY_CART';
+export const SET_USER = "SET_USER";
