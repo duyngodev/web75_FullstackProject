@@ -8,7 +8,6 @@ const validToken = async (req, res, next) => {
   req.user = {};
   const { access_token: accessToken, refresh_token: refreshToken } =
     req.cookies;
-  console.log(req.cookies);
   if (!refreshToken) {
     return next();
   }
