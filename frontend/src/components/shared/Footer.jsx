@@ -41,7 +41,7 @@ const Footer = () => {
                         </Grid>
                         <Grid item lg={3.3} md={3.3} sm={3.3} xs={12}>
                             <p style={{fontSize:'20px'}}>GET SUGARY LETTERS</p>
-                            <Stack direction="row" spacing={1} sx={{marginBottom:'20px'}}>
+                            <Stack direction="row" spacing={1} sx={{marginBottom:'20px', alignItems:"center"}}>
                                 <Email sx={{fontSize:'16px'}}/>
                                 <p>Email:</p>
                                 <input type="text" placeholder='Đăng ký nhận bảng tin' style={{ paddingLeft: '10px', borderColor: '#FF8080', fontSize: '10px', width: '145px', height: '27px', borderRadius: '20px' }} />
