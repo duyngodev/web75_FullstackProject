@@ -27,6 +27,7 @@ const Login = ({ prevLocation }) => {
 
       .then((response) => {
         const userId = response.data.userId; // Lấy userId từ response
+        console.log(userId);
         dispatch(setUser(userId));
         setErrType([]);
         window.location.href = !prevLocation ? "/Home" : `${prevLocation}`;
