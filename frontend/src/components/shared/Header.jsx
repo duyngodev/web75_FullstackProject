@@ -93,23 +93,24 @@ const Header = (props) => {
               display: "flex",
               flexGrow: "1",
               justifyContent: "center",
-              p: "0 20% 0 20%",
+              p: "0 10% 0 20%",
             }}>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="/home"
-              sx={{
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-                fontSize: "30px",
-              }}>
-              G3Bakery
-            </Typography>
+            <Link to="/Home">
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                sx={{
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "30px",
+                }}>
+                G3Bakery
+              </Typography>
+            </Link>
           </Box>
           <Box
             sx={{
