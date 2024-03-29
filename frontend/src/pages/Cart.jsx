@@ -50,11 +50,16 @@ const Cart = (props) => {
   const increaseBtClickHandler = (cartItem) => {
     dispatch(increaseQuantity(cartItem.id, userId));
   };
-  
 
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
   const payCartBtClickHandler = () => {
     const payCartData = {
-      idProductInCart: data?.cart.map((item) => ({ productId: item.id, quantity: item.quantityInCart })),
+      idProductInCart: data?.cart.map((item) => ({
+        productId: item.id,
+        quantity: item.quantityInCart,
+      })),
       userId: userId,
       totalQuantity: totalCart,
       discount: 0,
@@ -65,45 +70,51 @@ const Cart = (props) => {
     setPayCartData(payCartData); // Lưu dữ liệu vào state để sử dụng sau này
     //dispatch(payCart(payCartData));
   };
-  
+
   const [showPayPal, setShowPayPal] = useState(false); // State để kiểm soát hiển thị nút PayPal
   const [payCartData, setPayCartData] = useState(null); // State để lưu thông tin đơn hàng
-  
+
   const PayPalButton = () => {
-    const clientId = "AUTq0U905YZSDCsB_j7U1qgrCM1I9Rv9rDnEMg-rp5uF014Xv7FM1OnMJ17g0jiibfSVkwy50sDC88Y9";
-    var totalPriceVND = Math.round(totalPrice / 24 * 100) / 100;
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const clientId =
+      "ARATivl_FJrDzQ4r8Yzvg7vgVQamATYrLlGlcjEc6HFTwerzwe-Q4H6dSX7_xlxwmWP8hk-6sxHmRlTh";
+    var totalPriceVND = Math.round((totalPrice / 24) * 100) / 100;
     return (
-      <PayPalScriptProvider options={{ "client-id": clientId }}>
-        <PayPalButtons
-          createOrder={(data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: totalPriceVND,
-                    currency_code: "USD",
+      <div>
+        <PayPalScriptProvider options={{ "client-id": clientId }}>
+          <PayPalButtons
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: 0.01,
+                      // value: totalPriceVND,
+                      currency_code: "USD",
+                    },
+                    description: "Thanh toán giỏ hàng",
                   },
-                  description: "Thanh toán giỏ hàng",
-                },
-              ],
-            });
-          }}
-          onApprove={(data, actions) => {
-            // Thực hiện dispatch sau khi thanh toán được xác nhận
-            if (payCartData) {
-              dispatch(payCart(payCartData));
-            }
-            // Thực hiện xử lý sau khi thanh toán thành công
-            console.log(data);
-            return actions.order.capture().then(function (details) {
-              console.log(details);
-            });
-          }}
-        />
-      </PayPalScriptProvider>
+                ],
+              });
+            }}
+            onApprove={(data, actions) => {
+              // Thực hiện dispatch sau khi thanh toán được xác nhận
+
+              // Thực hiện xử lý sau khi thanh toán thành công
+              return actions.order.capture().then(function (details) {
+                if (payCartData) {
+                  dispatch(payCart(payCartData));
+                }
+                setShowSuccessMessage(true);
+                console.log(details);
+              });
+            }}
+          />
+        </PayPalScriptProvider>
+      </div>
     );
   };
-  
+
   const theme = createTheme({
     palette: {
       ochre: {
@@ -497,7 +508,8 @@ const Cart = (props) => {
           />
           <Stack spacing={2} sx={{ marginTop: "20px" }}>
             <ThemeProvider theme={theme}>
-            {showPayPal && <PayPalButton />}
+              {showPayPal && <PayPalButton />}
+              
               <Button
                 variant="contained"
                 sx={{
