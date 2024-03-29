@@ -6,15 +6,14 @@ import {
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
   PAY_CART,
-  SET_USER
+  SET_USER,
 } from "./actionTypes";
 import axios from "axios";
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
 axios.defaults.baseURL = "http://localhost:3001";
 const sendProductDataToServer = async (productData) => {
   try {
-
     const response = await axios.post("/product", productData);
     console.log("Product saved to database:", response.data);
     return response.data;
@@ -38,7 +37,6 @@ export const saveProductToDatabase = (productData) => async (dispatch) => {
     // Xử lý lỗi ở đây nếu cần thiết
   }
 };
-
 
 export const increaseQuantity = (productId, userId) => async (dispatch) => {
   try {
@@ -92,7 +90,7 @@ export const payCart = (productData) => async (dispatch) => {
       totalQuantity: productData.totalQuantity,
       discount: productData.discount,
       userId: productData.userId,
-      totalPrice: productData.totalPrice
+      totalPrice: productData.totalPrice,
     };
     console.log(transformedData);
     // Dispatch action xóa sản phẩm khỏi giỏ hàng
@@ -102,8 +100,7 @@ export const payCart = (productData) => async (dispatch) => {
     });
     // Gửi yêu cầu POST với dữ liệu đã chuyển đổi
     await axios.post(`/cart`, transformedData);
-    await axios.delete('/productInCart');
-    
+    await axios.delete("/productInCart");
   } catch (error) {
     console.error("Error removing product from cart:", error);
   }

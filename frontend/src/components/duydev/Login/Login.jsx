@@ -14,7 +14,6 @@ const Login = ({ prevLocation }) => {
   const [errType, setErrType] = useState([]);
   const dispatch = useDispatch();
   const submitHandler = async (e) => {
-    
     e.preventDefault();
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
@@ -25,14 +24,14 @@ const Login = ({ prevLocation }) => {
         { email, password },
         { withCredentials: true } // NEED TO CORS with coookies
       )
-      
+
       .then((response) => {
-        const { userId } = response.data; // Lấy userId từ response
+        const userId = response.data.userId; // Lấy userId từ response
         dispatch(setUser(userId));
         setErrType([]);
         window.location.href = !prevLocation ? "/home" : `${prevLocation}`;
       })
-      
+
       .catch((err) => {
         setErrType(err.response.data);
       });
