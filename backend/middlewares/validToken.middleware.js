@@ -8,23 +8,24 @@ const validToken = async (req, res, next) => {
   req.user = {};
   const { access_token: accessToken, refresh_token: refreshToken } =
     req.cookies;
-  console.log(`----------------------------Access token: ${accessToken}`);
-  if (!accessToken || !refreshToken) {
+  if (!refreshToken) {
     return next();
   }
   if (blacklisted.has(accessToken) || blacklisted.has(refreshToken)) next();
-  const { payload: user, expired } = verifyJWT(
-    accessToken,
-    process.env.ACCESS_KEY
-  );
-  if (user) {
-    req.user = {
-      sessionId: user.sessionId,
-      userId: user.userId,
-      access_token: accessToken,
-      refresh_token: refreshToken,
-    }; // need to access the protected route
-    return next();
+  if (accessToken) {
+    const { payload: user, expired } = verifyJWT(
+      accessToken,
+      process.env.ACCESS_KEY
+    );
+    if (user) {
+      req.user = {
+        sessionId: user.sessionId,
+        userId: user.userId,
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      }; // need to access the protected route
+      return next();
+    }
   }
 
   const { payload: refresh } =
