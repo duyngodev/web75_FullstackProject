@@ -29,7 +29,7 @@ const Login = ({ prevLocation }) => {
         const userId = response.data.userId; // Lấy userId từ response
         dispatch(setUser(userId));
         setErrType([]);
-        window.location.href = !prevLocation ? "/home" : `${prevLocation}`;
+        window.location.href = !prevLocation ? "/Home" : `${prevLocation}`;
       })
 
       .catch((err) => {
