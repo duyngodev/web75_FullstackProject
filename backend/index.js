@@ -10,6 +10,7 @@ import { tryCatch } from "./Utils/tryCatch.middleware.js";
 
 const app = express();
 dotenv.config();
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173", //need for cookies
@@ -17,7 +18,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 app.use(validToken);
