@@ -8,14 +8,10 @@ import {
 // middleware import
 import { requireUser } from "../middlewares/requireUser.middleware.js";
 import { tryCatch } from "../Utils/tryCatch.middleware.js";
-import { authorization } from "../controller/author.controller.js";
 
 const router = express.Router();
 
-router
-  .route("/login")
-  .post(tryCatch(userLogin))
-  .get(tryCatch(requireUser), tryCatch(authorization));
+router.route("/login").post(tryCatch(userLogin));
 //   .post(tryCatch(postDefault))       with middleware validation login
 
 router.route("/register").post(tryCatch(userSignup));

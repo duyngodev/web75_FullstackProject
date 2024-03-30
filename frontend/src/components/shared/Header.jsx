@@ -45,7 +45,6 @@ const Header = (props) => {
       .delete(`${link}`, { withCredentials: true })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    localStorage.removeItem("user");
     navigate("/Home");
   };
   const handleOpenNavMenu = (event) => {

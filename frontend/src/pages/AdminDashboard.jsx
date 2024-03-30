@@ -4,7 +4,6 @@ import Admin from "../components/duydev/Admin/AdminComponent.jsx";
 
 const AdminDashboard = () => {
   return (
-    
     <ThemeProvider theme={theme}>
       <Admin />
     </ThemeProvider>

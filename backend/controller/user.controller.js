@@ -22,24 +22,24 @@ const userLogin = async (req, res) => {
     { userId: user._id, sessionId: session._id },
     process.env.ACCESS_KEY,
     {
-      expiresIn: "5m",
+      expiresIn: "5s",
     }
   );
   const refressToken = jwt.sign(
     { sessionId: session._id },
     process.env.REFRESH_KEY,
     {
-      expiresIn: "24h",
+      expiresIn: "3h",
     }
   );
   // save token to ccookie
   res.cookie("access_token", accessToken, {
-    maxAge: 900000,
+    maxAge: 300000,
   });
   res.cookie("refresh_token", refressToken, {
-    maxAge: 8.64e7,
+    maxAge: 10.8e6,
   });
-  res.send({ sessionId: session._id, userId: user._id, userRole: user.role });
+  res.send(session);
 };
 
 // logout
@@ -77,7 +77,7 @@ const userSignup = async (req, res) => {
 
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
-  await UserModel.create({ name, password: hash, email, role: ["guest"] });
+  await UserModel.create({ name, password: hash, email });
 
   return res.status(200).send("signup successful");
 };
