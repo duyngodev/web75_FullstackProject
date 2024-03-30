@@ -28,32 +28,31 @@ const validToken = async (req, res, next) => {
     }
   }
 
-  const { payload: refresh } =
-    expired && refreshToken
-      ? verifyJWT(refreshToken, process.env.REFRESH_KEY)
-      : null;
-  const session = await getSession(refresh.sessionId);
-  if (!session) next();
+  const { payload: refresh } = verifyJWT(refreshToken, process.env.REFRESH_KEY);
 
-  const newAccessToken = jwt.sign(
-    { sessionId: session._id, userId: session.userId },
-    process.env.ACCESS_KEY,
-    {
-      expiresIn: "5m",
-    }
-  );
-  res.cookie("access_token", newAccessToken, {
-    maxAge: 300000,
-    secure: true,
-    // httpOnly: true,
-  });
-  const decoded = verifyJWT(newAccessToken, process.env.ACCESS_KEY).payload;
-  req.user = {
-    sessionId: decoded.sessionId,
-    userId: decoded.userId,
-    access_token: newAccessToken,
-    refresh_token: refreshToken,
-  }; //need to access the protected route
-  return next();
+  if (!refresh) {
+    next();
+  } else {
+    const session = await getSession(refresh.sessionId);
+    if (!session) next();
+    const newAccessToken = jwt.sign(
+      { sessionId: session._id, userId: session.userId },
+      process.env.ACCESS_KEY,
+      {
+        expiresIn: "5m",
+      }
+    );
+    res.cookie("access_token", newAccessToken, {
+      maxAge: 900000,
+    });
+    const decoded = verifyJWT(newAccessToken, process.env.ACCESS_KEY).payload;
+    req.user = {
+      sessionId: decoded.sessionId,
+      userId: decoded.userId,
+      access_token: newAccessToken,
+      refresh_token: refreshToken,
+    }; //need to access the protected route
+    return next();
+  }
 };
 export { validToken, blacklisted };
