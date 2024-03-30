@@ -22,12 +22,16 @@ const Register = () => {
     const password = passwordRef.current.value;
     const repeatPassword = repeatPasswordRef.current.value;
     await axios
-      .post("https://backendtestdn.onrender.com/user/register", {
-        name,
-        email,
-        password,
-        repeatPassword,
-      })
+      .post(
+        "https://backendtestdn.onrender.com/user/register",
+        {
+          name,
+          email,
+          password,
+          repeatPassword,
+        },
+        { withCredentials: true }
+      )
       .then(() => {
         setErrType([]);
         window.location.href = "/login";
