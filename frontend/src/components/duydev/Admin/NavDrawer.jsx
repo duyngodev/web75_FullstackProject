@@ -23,6 +23,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import { InputBase } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import axios from "axios";
+
+const link = "http://localhost:3001/user/logout";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -158,6 +161,14 @@ export default function NavDrawer() {
     setSelectedItem(item);
     navigate(`/admin/${item}`);
   };
+  const handleLogout = async () => {
+    await axios
+      .delete(`${link}`, { withCredentials: true })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+    localStorage.removeItem("user");
+    navigate("/Home");
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -190,6 +201,18 @@ export default function NavDrawer() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Typography
+            textAlign="center"
+            onClick={handleLogout}
+            sx={{
+              lineHeight: "1",
+              color: Colors.black,
+              position: "absolute",
+              right: "100px",
+              cursor: "pointer",
+            }}>
+            Logout
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer

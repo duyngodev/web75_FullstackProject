@@ -161,6 +161,6 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProductById = async (req, res) => {
   const _id = req.params.productId;
-  const product = await ProductModel.findById({ _id });
+  const product = await ProductModel.findByIdAndDelete({ _id });
   if (product) res.status(200).send(product.name);
 };

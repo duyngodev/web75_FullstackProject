@@ -28,9 +28,8 @@ const validToken = async (req, res, next) => {
     }
   }
 
-  const { payload: refresh } = refreshToken
-    ? verifyJWT(refreshToken, process.env.REFRESH_KEY)
-    : null;
+  const { payload: refresh } = verifyJWT(refreshToken, process.env.REFRESH_KEY);
+
   if (!refresh) {
     next();
   } else {
@@ -44,9 +43,7 @@ const validToken = async (req, res, next) => {
       }
     );
     res.cookie("access_token", newAccessToken, {
-      maxAge: 300000,
-      secure: true,
-      // httpOnly: true,
+      maxAge: 900000,
     });
     const decoded = verifyJWT(newAccessToken, process.env.ACCESS_KEY).payload;
     req.user = {

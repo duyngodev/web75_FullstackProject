@@ -25,7 +25,7 @@ productRouter
   .route("/")
   .get(tryCatch(getAllProduct))
   .post(tryCatch(buyProduct))
-  .put( tryCatch(updateProduct))
+  .put(tryCatch(requireUser), tryCatch(updateProduct))
   .delete(tryCatch(deleteAllProductInCart));
 
 productRouter

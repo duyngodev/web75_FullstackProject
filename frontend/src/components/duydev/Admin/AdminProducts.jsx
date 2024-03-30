@@ -36,7 +36,7 @@ const AdminProducts = () => {
         setProducts(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [products]);
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
@@ -68,7 +68,7 @@ const AdminProducts = () => {
   };
   const handleSubmit = async (values) => {
     await axios
-      .post(`${link}/filter`, { values })
+      .post(`${link}/filter`, values)
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
     setOpen(false);
