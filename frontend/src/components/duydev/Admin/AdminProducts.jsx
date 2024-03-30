@@ -25,7 +25,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const link = "http://localhost:3001/product";
+const link = "https://backendtestdn.onrender.com";
 
 const AdminProducts = () => {
   const [products, setProducts] = React.useState([]);
