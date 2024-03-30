@@ -23,7 +23,8 @@ const Register = () => {
     const repeatPassword = repeatPasswordRef.current.value;
     await axios
       .post(
-        "https://backendtestdn.onrender.com/user/register",
+        // "http://localhost:3001/user/register",
+        "https://web75-g3bakery.onrender.com/user/register",
         {
           name,
           email,

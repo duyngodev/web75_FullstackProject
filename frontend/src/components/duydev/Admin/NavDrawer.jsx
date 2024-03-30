@@ -25,7 +25,9 @@ import { useNavigate } from "react-router-dom";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import axios from "axios";
 
-const link = "https://backendtestdn.onrender.com/user/logout";
+const link = 
+// "http://localhost:3001/user/logout";
+"https://backendtestdn.onrender.com/user/logout";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({

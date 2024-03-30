@@ -20,7 +20,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const url = "https://backendtestdn.onrender.com/product";
+const url =
+//  "http://localhost:3001/product";
+ "https://web75-g3bakery.onrender.com/product";
 
 const ProductList = () => {
   //CSS properties

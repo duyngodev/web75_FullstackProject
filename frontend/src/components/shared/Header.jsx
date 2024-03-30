@@ -14,7 +14,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const link = "http://localhost:3001/user/logout";
+const link = 
+// "http://localhost:3001/user/logout";
+"https://web75-g3bakery.onrender.com";
 const pages = [
   "Home",
   "Service/CategoryListPage",
