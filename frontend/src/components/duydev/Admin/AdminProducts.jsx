@@ -31,7 +31,7 @@ const AdminProducts = () => {
   const [products, setProducts] = React.useState([]);
   React.useEffect(() => {
     axios
-      .get(`${link}`)
+      .get(`${link}`, { withCredentials: true })
       .then((response) => {
         setProducts(response.data);
       })
@@ -62,13 +62,13 @@ const AdminProducts = () => {
   };
   const handleDeleteProduct = async (product) => {
     await axios
-      .delete(`${link}/${product._id}`)
+      .delete(`${link}/${product._id}`, { withCredentials: true })
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
   };
   const handleSubmit = async (values) => {
     await axios
-      .post(`${link}/filter`, values)
+      .post(`${link}/filter`, values, { withCredentials: true })
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
     setOpen(false);

@@ -42,7 +42,7 @@ const ProductDetail = () => {
     setLoading(true);
     const result = await fetch(`${url}/${id}`, {
       method: "GET",
-      credential: "include",
+      credentials: "include",
     });
     const jsonRes = await result.json();
     setData(jsonRes.product);
