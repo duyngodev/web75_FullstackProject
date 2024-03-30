@@ -3,11 +3,12 @@ import React, { useRef, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { Navigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../nhandev/actions.jsx";
 const Login = ({ prevLocation }) => {
+  const navigate = useNavigate();
   // State config
   const inputEmail = useRef();
   const inputPassword = useRef();
@@ -33,7 +34,7 @@ const Login = ({ prevLocation }) => {
           "user",
           JSON.stringify({ userId, sessionId, userRole })
         );
-        window.location.href = !prevLocation ? "/Home" : `${prevLocation}`;
+        naviigate("/Home");
       })
       .catch((err) => {
         setErrType(err.response.data);
