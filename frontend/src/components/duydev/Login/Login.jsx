@@ -25,9 +25,9 @@ const Login = ({ prevLocation }) => {
         { withCredentials: true } // NEED TO CORS with coookies
       )
       .then((response) => {
-        const user = response.data;
-        console.log(user); // Lấy userId từ response
-        dispatch(setUser(user.userId));
+        const userId = response.data.userId; // Lấy userId từ response
+        console.log(userId);
+        dispatch(setUser(userId));
         setErrType([]);
         window.location.href = !prevLocation ? "/Home" : `${prevLocation}`;
       })
