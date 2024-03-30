@@ -15,17 +15,19 @@ export const getAllProducts = async (req, res) => {
     const limit = req.query.limit;
     const skip = req.query.skip;
     const category = req.query.category;
-    
+
     const totalCount = await ProductModel.countDocuments({ category });
-    
-    const products = await ProductModel.find({ category }).limit(limit).skip(skip);
-    
+
+    const products = await ProductModel.find({ category })
+      .limit(limit)
+      .skip(skip);
+
     res.status(200).send({ products, totalCount });
   } catch (error) {
-    console.error('Error fetching products:', error);
-    res.status(500).send('Internal Server Error');
+    console.error("Error fetching products:", error);
+    res.status(500).send("Internal Server Error");
   }
-}
+};
 
 export const createProduct = async (req, res) => {
   const {
@@ -37,7 +39,7 @@ export const createProduct = async (req, res) => {
     category,
     newProduct,
     bestSeller,
-    quantity
+    quantity,
   } = req.body;
   const newproduct = new ProductModel({
     name,
@@ -48,11 +50,11 @@ export const createProduct = async (req, res) => {
     category,
     newProduct,
     bestSeller,
-    quantity
-  })
+    quantity,
+  });
   const saveProduct = await newproduct.save();
   res.status(201).send(saveProduct);
-}
+};
 
 export const getProductById = async (req, res) => {
   const productId = req.params.productId;
@@ -61,12 +63,14 @@ export const getProductById = async (req, res) => {
   const limit = 6;
   const skip = 0;
   const category = product.category;
-  
-  const examples = await ProductModel.find({ category }).limit(limit).skip(skip);
+
+  const examples = await ProductModel.find({ category })
+    .limit(limit)
+    .skip(skip);
   if (!product) {
     return res.status(404).send("Product not found");
   }
-  res.status(200).send({product, examples});
+  res.status(200).send({ product, examples });
 };
 
 export const buyProduct = async (req, res) => {
@@ -113,14 +117,50 @@ export const filterProduct = async (req, res) => {
     filter.newProduct = newProduct === "true";
   }
   if (bestSeller !== undefined) {
-    filter.bestSeller = bestSeller === 'true'; 
+    filter.bestSeller = bestSeller === "true";
   }
   try {
     const totalCount = await ProductModel.countDocuments(filter);
     const products = await ProductModel.find(filter);
-    res.status(200).send({products, totalCount});
+    res.status(200).send({ products, totalCount });
   } catch (error) {
     res.status(500).send("Error filtering products: " + error.message);
   }
-}
+};
 
+export const updateProduct = async (req, res) => {
+  const {
+    _id,
+    name,
+    price,
+    imgURL1,
+    imgURL2,
+    description,
+    category,
+    newProduct,
+    bestSeller,
+    quantity,
+  } = req.body;
+  const product = await ProductModel.findByIdAndUpdate(
+    { _id },
+    {
+      name,
+      price,
+      imgURL1,
+      imgURL2,
+      description,
+      category,
+      newProduct,
+      bestSeller,
+      quantity,
+    }
+  );
+  if (!product) throw new Error("Product not found");
+  res.status(200).send(product);
+};
+
+export const deleteProductById = async (req, res) => {
+  const _id = req.params.productId;
+  const product = await ProductModel.findById({ _id });
+  if (product) res.status(200).send(product.name);
+};
