@@ -21,7 +21,8 @@ const Login = ({ prevLocation }) => {
     console.log(email, password);
     await axios
       .post(
-        `https://backendtestdn.onrender.com/user/login`,
+        // `http://localhost:3001/user/login`,
+        `https://web75-g3bakery.onrender.com/user/login`,
         { email, password },
         { withCredentials: true } // NEED TO CORS with coookies
       )
@@ -34,7 +35,8 @@ const Login = ({ prevLocation }) => {
           "user",
           JSON.stringify({ userId, sessionId, userRole })
         );
-        naviigate("/Home");
+
+        navigate("/home");
       })
       .catch((err) => {
         setErrType(err.response.data);

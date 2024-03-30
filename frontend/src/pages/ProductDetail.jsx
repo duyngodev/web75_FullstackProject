@@ -7,7 +7,9 @@ import "../components/nhandev/Swiper.scss";
 import ListSingleProduct from "../components/nhandev/ListSingleProduct.jsx";
 import { selectClasses } from "@mui/material";
 
-const url = "https://backendtestdn.onrender.com/product";
+const url = 
+// "http://localhost:3001/product";
+"https://web75-g3bakery.onrender.com";
 
 const ProductDetail = () => {
   const [data, setData] = useState([]);
