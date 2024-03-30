@@ -33,7 +33,9 @@ const Login = ({ prevLocation }) => {
           "user",
           JSON.stringify({ userId, sessionId, userRole })
         );
-        window.location.href = !prevLocation ? "/Home" : `${prevLocation}`;
+        window.location.href = !prevLocation
+          ? "https://backendtestdn.onrender.com/Home"
+          : `${prevLocation}`;
       })
       .catch((err) => {
         setErrType(err.response.data);

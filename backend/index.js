@@ -13,7 +13,7 @@ dotenv.config();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173", //need for cookies
+    origin: "https://backendtestdn.onrender.com", //need for cookies
     credentials: true, //need for cookies
   })
 );
