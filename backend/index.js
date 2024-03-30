@@ -13,7 +13,7 @@ dotenv.config();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://backendtestdn.onrender.com", //need for cookies
+    origin: "https://web75-g3bakery.onrender.com", //need for cookies
     credentials: true, //need for cookies
   })
 );
