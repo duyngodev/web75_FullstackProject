@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -27,25 +27,14 @@ const Header = (props) => {
   const { data } = props;
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [login, setLogin] = useState(null);
-  const acces_cookie = Cookies.get("access_token");
-  const refresh_cookie = Cookies.get("refresh_token");
-
-  useEffect(() => {
-    if (acces_cookie || (refresh_cookie && !acces_cookie)) {
-      setLogin(true);
-    }
-    if (!refresh_cookie) {
-      setLogin(null);
-    }
-  }, [refresh_cookie]);
+  const cookie = Cookies.get("access_token");
   const navigate = useNavigate();
   const handleLogout = async () => {
     await axios
       .delete(`${link}`, { withCredentials: true })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    navigate("/Home");
+    navigate("/home");
   };
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -130,7 +119,7 @@ const Header = (props) => {
               justifyContent: "center",
               alignContent: "center",
             }}>
-            {login && (
+            {cookie && (
               <Box>
                 <IconButton
                   onClick={handleOpenUserMenu}
@@ -174,7 +163,7 @@ const Header = (props) => {
                 </Menu>
               </Box>
             )}
-            {!login && (
+            {!cookie && (
               <Box
                 sx={{
                   mr: 2,

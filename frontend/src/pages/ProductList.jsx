@@ -20,7 +20,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const url = "http://localhost:3001/product";
+const url = "http://localhost:3001/product"
 
 const ProductList = () => {
   //CSS properties
@@ -133,25 +133,20 @@ const ProductList = () => {
   //Page of 9 products
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
-  const [maxPage, setMaxPage] = useState(0);
+  const [maxPage, setMaxPage] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${url}/filter/?skip=${
-            (currentPage - 1) * itemsPerPage
-          }&limit=${itemsPerPage}&category=${filterItem}`,
-          { credentials: "include" }
-        );
+        const response = await fetch(`${url}/filter/?skip=${(currentPage - 1) * itemsPerPage}&limit=${itemsPerPage}&category=${filterItem}`);
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setDataProduct(data.products);
-        setMaxPage(data.totalCount);
+        setMaxPage(data.totalCount)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
     fetchData();
@@ -177,12 +172,12 @@ const ProductList = () => {
   // );
   // const dataShow = dataCategoryFilter.slice(indexOfFirstItem, indexOfLastItem);
   // console.log(dataShow)
-  const dataShow = dataProduct;
+  const dataShow = dataProduct
 
   //Max Page for Page of 9 Products
-
+  
   let pages = [];
-  for (let i = 1; i <= maxPage / itemsPerPage; i++) {
+  for (let i = 1; i <= maxPage/itemsPerPage; i++) {
     pages = [...pages, i];
   }
 

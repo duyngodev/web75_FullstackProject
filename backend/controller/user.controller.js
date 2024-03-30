@@ -7,6 +7,7 @@ import { blacklisted } from "../middlewares/validToken.middleware.js";
 
 // login
 const userLogin = async (req, res) => {
+  const errorTypeIn = [];
   const { email, password } = req.body;
   if (!email && !password) return res.status(400).send(["email", "password"]);
   const user = await UserModel.findOne({ email: email });
@@ -22,7 +23,7 @@ const userLogin = async (req, res) => {
     { userId: user._id, sessionId: session._id },
     process.env.ACCESS_KEY,
     {
-      expiresIn: "5s",
+      expiresIn: "5m",
     }
   );
   const refressToken = jwt.sign(
@@ -35,15 +36,24 @@ const userLogin = async (req, res) => {
   // save token to ccookie
   res.cookie("access_token", accessToken, {
     maxAge: 300000,
+    secure: true,
+    // domain: "localhost",
+    // path: "/",
+    // httpOnly: true,
   });
   res.cookie("refresh_token", refressToken, {
-    maxAge: 10.8e6,
+    maxAge: 3.154e10,
+    secure: true,
+    // domain: "localhost",
+    // path: "/",
+    // httpOnly: true,
   });
   res.send(session);
 };
 
 // logout
 const userLogout = async (req, res) => {
+  // console.log(req.user);
   const { sessionId } = req.user;
   await invalidateSession(sessionId);
   blacklisted.add(req.user.access_token);
@@ -51,9 +61,9 @@ const userLogout = async (req, res) => {
 
   await res.cookie("access_token", "", {
     maxAge: 0,
-  });
-  res.cookie("refresh_token", "", {
-    maxAge: 0,
+    secure: true,
+
+    // httpOnly: true,
   });
 
   res.send("log out successfully");
