@@ -21,8 +21,8 @@
 
 ### Nhan Phu Le
 - Roles: Front-end, Back-end
-- Front-end Tasks: Product page, category list page
-- Back-end Tasks: Payment, Paypal, Cart (CRUD).
+- Front-end Tasks: Product page, category list page, Cart page
+- Back-end Tasks: Product, ProductInCart, Payment, Paypal, Cart (CRUD).
 
 ### Nhan Hao
 - Roles: Front-end, Back-end
