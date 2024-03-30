@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../nhandev/actions.jsx";
@@ -34,6 +35,7 @@ const Login = ({ prevLocation }) => {
           "user",
           JSON.stringify({ userId, sessionId, userRole })
         );
+
         navigate("/home");
       })
       .catch((err) => {

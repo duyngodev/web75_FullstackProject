@@ -16,13 +16,13 @@
 
 ### Duy Bao Ngo (Leader)
 - Roles: Leader, Front-end, Back-end.
-- Front-end Tasks: Home page, landing page, set up project, product list page,  route-link, reporter.
+- Front-end Tasks: Home page, landing page, admin page, set up project, product list page,  route-link, reporter.
 - Back-end Tasks: Signup, Login, Logout, (CRUD, Token, Refresh Token, Cookies).
 
 ### Nhan Phu Le
 - Roles: Front-end, Back-end
-- Front-end Tasks: Product page, category list page
-- Back-end Tasks: Payment, Paypal, Cart (CRUD).
+- Front-end Tasks: Product page, category list page, Cart page
+- Back-end Tasks: Product, ProductInCart, Payment, Paypal, Cart (CRUD).
 
 ### Nhan Hao
 - Roles: Front-end, Back-end
